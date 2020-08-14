@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sona Template" />
+    <meta name="keywords" content="Sona, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sona | Template</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="../css/flaticon.css" type="text/css" />
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+    <link rel="stylesheet" href="../css/breadcrumb.css" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+      <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="canvas-close">
+        <i class="icon_close"></i>
+      </div>
+      <nav class="mainmenu mobile-menu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../rooms.html">Rooms</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+          <li><a href="../aboutus.html">About Us</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li>
+            <a href="../my_booking.html">
+              My Booking
+              <i class="fa fa-search" aria-hidden="true"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+      <div id="mobile-menu-wrap"></div>
+      <div class="top-social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+      </div>
+      <ul class="top-widget">
+        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+        <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+      </ul>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+      <div class="menu-item">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+              <div class="logo">
+                <a href="../index.html">
+                  <img src="../img/logo.png" alt="" />
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-10">
+              <div class="nav-menu">
+                <nav class="mainmenu">
+                  <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../rooms.html">Rooms</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li><a href="../aboutus.html">About Us</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li>
+                      <a href="../my_booking.html">
+                        My Booking
+                        <i class="fa fa-search" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <div class="bread">
+      <div class="breadcrumb-pagination">
+        <div class="completed">
+          <span>1</span>
+          <p>Select Dates</p>
+        </div>
+        <div class="active">
+          <span>2</span>
+          <p>Rooms</p>
+        </div>
+        <div class="todo">
+          <span>3</span>
+          <p>Guest Detail</p>
+        </div>
+        <div class="todo">
+          <span>4</span>
+          <p>Review</p>
+        </div>
+        <div class="todo">
+          <span>5</span>
+          <p>Confirmation</p>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Our Rooms</h2>
+                        <div class="bt-option">
+                            <a href="./home.html">Home</a>
+                            <span>Rooms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Breadcrumb Section End -->
+
+    <!-- Room Details Section Begin -->
+    <section id="room-details-section" class="room-details-section spad mt-2">
+      <div class="container">
+        <div class="card m-4" style="display: none;" id="error">
+          <div class="card-body border border-danger bg-light">
+            <h5 class="card-title">* Select Room First</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div id="room_row" class="col-lg-8"></div>
+          <div class="col-lg-4">
+            <div class="card mt-2 bg-light" style="width: 20rem;">
+              <div class="card-body">
+                <h2 class="card-title">Your Stay</h2>
+                <div class="row">
+                  <div class="col-6">
+                    <span><b>Check-In</b></span>
+                  </div>
+                  <div class="col-6">
+                    <span><b>Check-Out</b></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <span>8:00 AM</span>
+                  </div>
+                  <div class="col-6">
+                    <span>10:00 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room_selected">
+                <div class="dropdown-divider ml-4 mr-4"></div>
+                <table
+                  class="table table-borderless table-sm ml-2"
+                  id="invoice"
+                >
+                  <thead>
+                    <tr>
+                      <th>Room</th>
+                      <th>Qty</th>
+                      <th>Price</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="card-body">
+                <div class="dropdown-divider"></div>
+                <button class="btn btn-info mr-2" id="continue">
+                  Continue
+                </button>
+                <button
+                  class="btn btn-danger ml-2"
+                  id="reset"
+                  onClick="window.location.reload()"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Room Details Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-text">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="ft-about">
+                <div class="logo">
+                  <a href="#">
+                    <img src="../img/footer-logo.png" alt="" />
+                  </a>
+                </div>
+                <p>
+                  We inspire and reach millions of travelers<br />
+                  across 90 local websites
+                </p>
+                <div class="fa-social">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="#"><i class="fa fa-youtube-play"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+              <div class="ft-contact">
+                <h6>Contact Us</h6>
+                <ul>
+                  <li>(12) 345 67890</li>
+                  <li>info.colorlib@gmail.com</li>
+                  <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-option">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="co-text">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <!--<script src="../js/jquery.nice-select.min.js"></script> -->
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  </body>
+  <script>
+    $(document).ready(function () {
+      if (
+        sessionStorage.getItem("checkin_date") == null ||
+        sessionStorage.getItem("checkout_date") == null
+      )
+        window.location = "../index.html";
+
+      let reqr_roomtype = (function () {
+        var tmp = null;
+        $.ajax({
+          async: false,
+          url: "../php_functions/get_roomtype.php",
+          type: "POST",
+          success: function (data) {
+            tmp = data;
+          },
+        });
+        return JSON.parse(tmp);
+      })();
+
+      let req_rooms = (function () {
+        var tmp = null;
+        $.ajax({
+          async: false,
+          url: "../php_functions/get_rooms.php",
+          data:
+            "check_in=" +
+            sessionStorage.getItem("checkin_date") +
+            "&check_out=" +
+            sessionStorage.getItem("checkout_date"),
+          type: "POST",
+          success: function (data) {
+            tmp = data;
+          },
+        });
+        return JSON.parse(tmp);
+      })();
+
+      reqr_roomtype.map((roomtype) => {
+        let counter_rooms = 0;
+        req_rooms.map((rooms) => {
+          if (rooms.roomtype_id == roomtype.roomtype_id) {
+            counter_rooms += 1;
+          } else {
+          }
+        });
+
+        let option = "";
+
+        if (counter_rooms == 0) {
+          option = "<option value='0'>No available room</option>";
+        } else {
+          for (i = 1; counter_rooms >= i; i++) {
+            option += "<option value=" + i + ">" + i + "</option>";
+          }
+        }
+
+        $("#room_row").append(
+          $(
+            '<div class="room-details-item" id="view' +
+              roomtype.roomtype_id +
+              '">' +
+              '<img src ="../admin/dist/img/room/' +
+              roomtype.roomtype_photo +
+              '" style="    width: 100%; height: 461px;" alt = ""/>' +
+              '<div class="rd-text"><div class="rd-title"><h3>' +
+              roomtype.roomtype_name +
+              '</h3><div class="rdt-right"> <form class="add-room"><div class="row">' +
+              '<input value="' +
+              roomtype.roomtype_id +
+              '" hidden/><input value="' +
+              roomtype.roomtype_price +
+              '" hidden/><input value="' +
+              roomtype.roomtype_name +
+              '" hidden/><input value="' +
+              roomtype.roomtype_capacity +
+              '"hidden/>' +
+              '<div class="col-8"> ' +
+              '<select class="form-control" id=room' +
+              roomtype.roomtype_id +
+              ' required><option value="" selected hidden disabled>Select Avail. Rooms</option>' +
+              option +
+              "</select> <p class='text-center'><em>( " +
+              counter_rooms +
+              " left)</em></p> </div>" +
+              '<div class="col-4"><button class="room' +
+              roomtype.roomtype_id +
+              ' btn btn-primary" id=room' +
+              roomtype.roomtype_id +
+              ">ADD</button></div></div> </form>" +
+              "</div> " +
+              "</div> " +
+              "<h2>" +
+              roomtype.roomtype_price +
+              "Php<span>/ Pernight</span></h2> " +
+              "<table> " +
+              "<tbody>" +
+              "<tr> " +
+              '<td class="r-o">Capacity:</td> ' +
+              "<td>Max person " +
+              roomtype.roomtype_capacity +
+              "</td>" +
+              " </tr>" +
+              "<tr> " +
+              '<td class="r-o">Description:</td>' +
+              " <td>" +
+              roomtype.description +
+              "</td>" +
+              " </tr>" +
+              " </tbody>" +
+              " </table>" +
+              " </div>" +
+              " </div >"
+          )
+        );
+      });
+
+      let selected_array = [];
+
+      //add_selected
+      $(".add-room").submit(function (e) {
+        e.preventDefault();
+        if (e.target[4].value != 0) {
+          let roomtype_id = e.target[0].value;
+          let roomtype_price = e.target[1].value;
+          let roomtype_name = e.target[2].value;
+          let roomtype_capacity = e.target[3].value;
+          let num_rooms = e.target[4].options.selectedIndex;
+
+          let new_price = roomtype_price * num_rooms;
+          let new_capacity = roomtype_capacity * num_rooms;
+          let selected_object = {};
+
+          let selected_rooms = [];
+
+          let counter = 1;
+          req_rooms.map((rooms) => {
+            if (rooms.roomtype_id == roomtype_id && counter <= num_rooms) {
+              selected_rooms.push(rooms.room_id);
+              counter++;
+            }
+          });
+
+          selected_object.roomtype_id = roomtype_id;
+          selected_object.roomtype_name = roomtype_name;
+          selected_object.num_rooms = num_rooms;
+          selected_object.new_capacity = new_capacity;
+          selected_object.new_price = new_price;
+          selected_object.room_ids = selected_rooms;
+
+          selected_array.push(selected_object);
+
+          $("#room" + roomtype_id).attr("disabled", "disabled");
+          $(".room" + roomtype_id).attr("disabled", "disabled");
+
+          console.log(selected_array);
+          $("#invoice > tbody:last-child").append(
+            "<tr id='" +
+              roomtype_id +
+              "'>" +
+              "<th>" +
+              roomtype_name +
+              "</th>" +
+              "<td>" +
+              num_rooms +
+              "</td>" +
+              "<td>PHP " +
+              new_price +
+              ".00</td>" +
+              "<td>" +
+              '<button class="btn' +
+              roomtype_id +
+              ' btn btn-default">' +
+              '<i class="fa fa-times"></i>' +
+              "</button>" +
+              "</td>" +
+              "</tr>"
+          );
+          $(".btn" + roomtype_id).attr(
+            "onclick",
+            "deleteselected(" + roomtype_id + ")"
+          );
+        } else {
+          Swal.fire({
+            icon: "info",
+            title: "Oops...",
+            text:
+              "This type of room has no available room, Try another booking dates",
+          });
+        }
+      });
+
+      //remove-selected
+      deleteselected = (e) => {
+        let room_id = e;
+        let new_object = {};
+
+        selected_array = selected_array.filter(check_selected);
+
+        function check_selected(item, index, array) {
+          if (item.roomtype_id != room_id) {
+            return item;
+          }
+        }
+        //console.log(room_id[0])
+        console.log(selected_array);
+        $("#" + room_id).remove();
+        $("#room" + room_id).removeAttr("disabled", "disabled");
+        $(".room" + room_id).removeAttr("disabled", "disabled");
+      };
+
+      $("#continue").click((e) => {
+        //console.log(selected_array)
+        if (selected_array.length != 0) {
+          sessionStorage.setItem(
+            "room_details",
+            JSON.stringify(selected_array)
+          );
+
+          window.location = "guest-details.html";
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "You forgot something?",
+            text: "Please select room first!",
+          });
+        }
+      });
+
+      /* var windw = this;
+      $.fn.followTo = function (pos) {
+        var $this = this,
+          $window = $(windw);
+        $window.scroll(function (e) {
+          if ($window.scrollTop() > pos) {
+            $this.css({
+              position: "absolute",
+              top: pos,
+            });
+          } else {
+            $this.css({
+              position: "fixed",
+              top: "15em",
+            });
+          }
+        });
+      };
+      $("#invoice").followTo(2000); */
+    });
+  </script>
+</html>

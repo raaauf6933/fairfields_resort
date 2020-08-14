@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sona Template" />
+    <meta name="keywords" content="Sona, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sona | Template</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="admin/plugins/toastr/toastr.min.css" />
+    <link
+      rel="stylesheet"
+      href="admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+      <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="canvas-close">
+        <i class="icon_close"></i>
+      </div>
+      <nav class="mainmenu mobile-menu">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./rooms.html">Rooms</a></li>
+          <li><a href="./gallery.html">Gallery</a></li>
+          <li><a href="./aboutus.html">About Us</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li class="active">
+            <a href="./my_booking.html">
+              My Booking
+              <i class="fa fa-search" aria-hidden="true"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+      <div id="mobile-menu-wrap"></div>
+      <div class="top-social"></div>
+      <ul class="top-widget">
+        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+        <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+      </ul>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+      <div class="menu-item">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+              <div class="logo">
+                <a href="./index.html">
+                  <img src="img/logo1-removebg-preview.png" alt="" />
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-10">
+              <div class="nav-menu">
+                <nav class="mainmenu">
+                  <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./rooms.html">Rooms</a></li>
+                    <li>
+                      <a href="./gallery.html">Gallery</a>
+                    </li>
+                    <li>
+                      <a href="aboutus.html">About Us</a>
+                    </li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li class="active">
+                      <a href="./my_booking.html">
+                        My Booking
+                        <i class="fa fa-search" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="card shadow" style="width: 40rem;">
+            <div class="card-body">
+              <div style="display: none;" class="container text-sm" id="error">
+                <table class="table table-light">
+                  <thead>
+                    <tr>
+                      <td class="text-danger" align="center">
+                        <i class="fa fa-exclamation-circle"></i> Invalid
+                        Credentials!
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <form id="mybooking_form">
+                <div class="form-group">
+                  <label for="exampleInputEmail1"
+                    ><h4>Booking Reference:</h4></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="booking_reference"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter booking reference"
+                    required
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1"><h4>Email:</h4></label>
+                  <input
+                    type="email"
+                    class="form-control form-control-lg"
+                    id="booking_email"
+                    placeholder="Enter email"
+                    required
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary">
+                    <h4 class="text-light">Submit</h4>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-text">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="ft-about">
+                <div class="logo">
+                  <a href="#">
+                    <img src="img/footer-logo.png" alt="" />
+                  </a>
+                </div>
+                <p>
+                  We inspire and reach millions of travelers<br />
+                  across 90 local websites
+                </p>
+                <div class="fa-social">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="#"><i class="fa fa-youtube-play"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+              <div class="ft-contact">
+                <h6>Contact Us</h6>
+                <ul>
+                  <li>(12) 345 67890</li>
+                  <li>info.colorlib@gmail.com</li>
+                  <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-option">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="co-text">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="admin/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="admin/plugins/toastr/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+  </body>
+  <script>
+    $(document).ready(() => {
+      $("#mybooking_form").submit((e) => {
+        e.preventDefault();
+        $.LoadingOverlay("show");
+        let booking_reference = e.target[0].value;
+        let email = e.target[1].value;
+
+        errorLogin = () => {
+          $("#error").css("display", "block");
+        };
+
+        setTimeout(function () {
+          $.LoadingOverlay("hide");
+          $.ajax({
+            url: "php_functions/my_booking/login.php",
+            data: "booking_reference=" + booking_reference + "&email=" + email,
+            type: "POST",
+            success: function (response) {
+                let guest_id = 0;
+              if (response == '"0"') {
+                errorLogin();
+              } else {
+                 JSON.parse(response).map((e) => {
+                guest_id = e.guest_id;
+              });
+                sessionStorage.setItem("my_booking_guestid",guest_id);
+                window.location = "my_booking/mybooking.html";
+              }
+            },
+          });
+        }, 500);
+      });
+    });
+  </script>
+</html>
