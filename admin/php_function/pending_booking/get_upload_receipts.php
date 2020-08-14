@@ -1,5 +1,5 @@
 <?php
-include "dbconn.php";
+include "../dbconn.php";
 
 $reservation_id = $_POST['reservation_id'];
 
