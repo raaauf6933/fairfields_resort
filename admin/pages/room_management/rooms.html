@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>AdminLTE 3 | Blank Page</title>
+    <title>Admin | Rooms</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<link rel="icon" type="image/png" href="../../../img/icon.png" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -193,7 +193,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="../../index.html" class="brand-link">
           <div class="text-center">
             <img
               class="profile-user-img img-fluid img-circle"
@@ -563,6 +563,12 @@
 
   <script>
     $(document).ready(function () {
+      if (
+        sessionStorage.getItem("user_info") == null 
+      )
+        window.location = "../../authentication/login.html";
+
+        
       //get all room categories
       let table = $("#rooms_table").DataTable({
         responsive: true,

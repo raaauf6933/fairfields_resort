@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2020 at 04:57 PM
+-- Generation Time: Aug 15, 2020 at 03:34 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -32,17 +32,18 @@ CREATE TABLE `additional_type` (
   `additional_id` int(32) NOT NULL,
   `additional_type` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `additional_amount` float(10,2) NOT NULL
+  `additional_amount` float(10,2) NOT NULL,
+  `status` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `additional_type`
 --
 
-INSERT INTO `additional_type` (`additional_id`, `additional_type`, `description`, `additional_amount`) VALUES
-(1, 'Extra Bed', 'Extra Bed', 100.00),
-(2, 'Gym', 'Gym', 100.00),
-(3, 'Pool', 'Pool', 200.00);
+INSERT INTO `additional_type` (`additional_id`, `additional_type`, `description`, `additional_amount`, `status`) VALUES
+(1, 'Extra Bed', 'Extra Bed', 100.00, 1),
+(2, 'Gym', 'Gym', 100.00, 1),
+(3, 'Pool', 'Pool', 200.00, 1);
 
 -- --------------------------------------------------------
 
@@ -266,6 +267,28 @@ INSERT INTO `room_type` (`roomtype_id`, `roomtype_name`, `roomtype_capacity`, `r
 (38, 'sample test', 10, 10, 'ffffff', 'sample test-6168-Ali.jpg', 1),
 (39, 'demo', 1, 5000, '1', 'demo-6649-Untitled-1.jpg', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_accounts`
+--
+
+CREATE TABLE `user_accounts` (
+  `user_id` int(32) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `status` int(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_accounts`
+--
+
+INSERT INTO `user_accounts` (`user_id`, `first_name`, `last_name`, `username`, `password`, `status`) VALUES
+(202095974, 'Rauf', 'Dimaampao', 'raaauf6933', '123', 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -329,6 +352,12 @@ ALTER TABLE `room_reservation`
 --
 ALTER TABLE `room_type`
   ADD PRIMARY KEY (`roomtype_id`);
+
+--
+-- Indexes for table `user_accounts`
+--
+ALTER TABLE `user_accounts`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

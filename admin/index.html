@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>AdminLTE 3 | Blank Page</title>
+    <title>Admin | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    	<link rel="icon" type="image/png" href="../img/icon.png" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
@@ -174,9 +176,13 @@
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
-        <div class="text-center">
-          <img class="profile-user-img img-fluid img-circle" src="dist/img/resort.png" alt="User profile picture">
-        </div>
+          <div class="text-center">
+            <img
+              class="profile-user-img img-fluid img-circle"
+              src="dist/img/resort.png"
+              alt="User profile picture"
+            />
+          </div>
           <span class="brand-text font-weight-light"></span>
         </a>
 
@@ -223,44 +229,50 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="pages/bookings/" class="nav-link">
-                        <i class="far fa-circle nav-icon text-info"></i>
-                        <p>Walk - In</p>
-                      </a>
-                    </li>
-                    <div class="dropdown-divider"></div>
                   <li class="nav-item">
-                    <a href="pages/bookings/pending_bookings.html" class="nav-link">
+                    <a href="pages/bookings/" class="nav-link">
+                      <i class="far fa-circle nav-icon text-info"></i>
+                      <p>Walk - In</p>
+                    </a>
+                  </li>
+                  <div class="dropdown-divider"></div>
+                  <li class="nav-item">
+                    <a
+                      href="pages/bookings/pending_bookings.html"
+                      class="nav-link"
+                    >
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Pending Booking</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/bookings/confirmed_bookings.html" class="nav-link">
+                    <a
+                      href="pages/bookings/confirmed_bookings.html"
+                      class="nav-link"
+                    >
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Confirmed Booking</p>
                     </a>
                   </li>
                   <div class="dropdown-divider"></div>
-                    <li class="nav-item">
-                      <a href="pages/bookings/rooms.html" class="nav-link">
-                        <i class="far fa-circle nav-icon text-warning"></i>
-                        <p>Rooms</p>
-                      </a>
-                    </li>
+                  <li class="nav-item">
+                    <a href="pages/bookings/rooms.html" class="nav-link">
+                      <i class="far fa-circle nav-icon text-warning"></i>
+                      <p>Rooms</p>
+                    </a>
+                  </li>
                   <li class="nav-item">
                     <a href="pages/bookings/checkin.html" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Check-In</p>
                     </a>
                   </li>
-                    <li class="nav-item">
-                      <a href="pages/bookings/checkout.html" class="nav-link">
-                        <i class="far fa-circle nav-icon text-danger"></i>
-                        <p>Check-Out</p>
-                      </a>
-                    </li>
+                  <li class="nav-item">
+                    <a href="pages/bookings/checkout.html" class="nav-link">
+                      <i class="far fa-circle nav-icon text-danger"></i>
+                      <p>Check-Out</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item has-treeview">
@@ -507,4 +519,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
   </body>
+
+  <script>
+    $(document).ready(function () {
+      if (sessionStorage.getItem("user_info") == null)
+        window.location = "authentication/login.html";
+    });
+  </script>
 </html>
