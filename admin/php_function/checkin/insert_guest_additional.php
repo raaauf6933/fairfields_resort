@@ -6,6 +6,13 @@ $reservation_id = $_POST['reservation_id'];
 $additional_id = $_POST['additional_id'];
 $qty = $_POST['qty'];
 
+$additional_type = "";
+$additional_amount = 0;
+
+$sql_additional = mysqli_query($conn, "SELECT * FROM additional_type WHERE additional_id = '$additional_id'");
+
+
+
 for($i=1; $qty >= $i; $i++){
     $sql_insert = mysqli_query($conn, "INSERT INTO guest_additional (reservation_id,additional_id) VALUES ('$reservation_id','$additional_id')");
 }

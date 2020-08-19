@@ -3,40 +3,45 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Admin | Additional Categories</title>
+    <title>Admin | Walk-In - Select Dates</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="../../../img/icon.png" />
+    <link rel="icon" type="image/png" href="../../../../img/icon.png" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="../../plugins/fontawesome-free/css/all.min.css"
+      href="../../../plugins/fontawesome-free/css/all.min.css"
     />
     <!-- Ionicons -->
+    <link rel="stylesheet" href="./datepicker_files/jquery.datepicker2.css" />
+    <link rel="stylesheet" href="./datepicker_files/breadcrumb.css" />
     <link
       rel="stylesheet"
       href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
     />
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="../../../dist/css/adminlte.min.css" />
     <!-- Google Font: Source Sans Pro -->
     <link
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
-      href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css"
+      href="../../../plugins/daterangepicker/daterangepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.css"
     />
 
     <link
       rel="stylesheet"
-      href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"
+      href="../../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"
     />
-    <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css" />
+    <link rel="stylesheet" href="../../../plugins/toastr/toastr.min.css" />
     <style>
-      #additional_table td,
+      #check_out td,
       th {
         text-align: center;
         cursor: pointer;
@@ -76,7 +81,7 @@
                 <!-- Message Start -->
                 <div class="media">
                   <img
-                    src="../../dist/img/user1-128x128.jpg"
+                    src="../../../dist/img/user1-128x128.jpg"
                     alt="User Avatar"
                     class="img-size-50 mr-3 img-circle"
                   />
@@ -100,7 +105,7 @@
                 <!-- Message Start -->
                 <div class="media">
                   <img
-                    src="../../dist/img/user1-128x128.jpg"
+                    src="../../../dist/img/user1-128x128.jpg"
                     alt="User Avatar"
                     class="img-size-50 img-circle mr-3"
                   />
@@ -201,7 +206,7 @@
           <div class="text-center">
             <img
               class="profile-user-img img-fluid img-circle"
-              src="../../dist/img/resort.png"
+              src="../../../dist/img/resort.png"
               alt="User profile picture"
             />
           </div>
@@ -214,7 +219,7 @@
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="../../dist/img/avatar5.png"
+                src="../../../dist/img/avatar5.png"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
@@ -242,8 +247,8 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
                   <p>
                     Bookings
@@ -252,7 +257,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./walkin.html" class="nav-link">
+                    <a href="./walkin.html" class="nav-link active">
                       <i class="far fa-circle nav-icon text-info"></i>
                       <p>Walk - In</p>
                     </a>
@@ -318,18 +323,15 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="./additional_categories.html" class="nav-link active">
-                  <i class="nav-icon fas fa-tags"></i>
+                <a href="../maintenance/" class="nav-link">
+                  <i class="nav-icon fas fa-sliders-h"></i>
                   <p>
-                    Additional/Extras
+                    Maintenance
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a
-                  href="../user_management/user_management.html"
-                  class="nav-link"
-                >
+                <a href="../user_management/" class="nav-link">
                   <i class="nav-icon fas fa-user-cog"></i>
                   <p>
                     User Management
@@ -354,53 +356,57 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <div class="container-fluid">
-            <div class="row">
-              <div
-                class="col-lg-3 col-6"
-                style="cursor: pointer;"
-                data-toggle="modal"
-                data-target="#add-default"
-              >
-                <!-- small box -->
-                <div class="small-box bg-primary">
-                  <div class="inner">
-                    <h4 class="mb-5">NEW ITEM</h4>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-plus"></i>
-                  </div>
-                </div>
-              </div>
-              <!-- ./col -->
-            </div>
-          </div>
+          <div class="container-fluid"></div>
           <!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
           <!-- Default box -->
           <div class="card">
-            <div class="card-header bg-indigo">
-              <h3 class="card-title">Additional/Extras</h3>
+            <div class="card-header bg-info">
+              <h3 class="card-title">
+                <i class="fas fa-book mr-1"></i> Walk-In Bookings
+              </h3>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table
-                  class="table table-lg table-striped table-bordered table-hover"
-                  id="additional_table"
-                >
-                  <thead>
-                    <th>Item Name</th>
-                    <th>Item Price</th>
-                    <th>Status</th>
-                  </thead>
-                  <tbody></tbody>
-                </table>
+              <div class="bread">
+                <div class="breadcrumb-pagination">
+                  <div class="activee">
+                    <span>1</span>
+                    <p>Select Dates</p>
+                  </div>
+                  <div class="todo">
+                    <span>2</span>
+                    <p>Select Rooms</p>
+                  </div>
+                  <div class="todo">
+                    <span>3</span>
+                    <p>Guest Detail</p>
+                  </div>
+                  <div class="todo">
+                    <span>4</span>
+                    <p>Review</p>
+                  </div>
+                  <div class="todo">
+                    <span>5</span>
+                    <p>Confirmation</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center mt-2">
+                <div class="row">
+                  <div class="col-6">
+                    <label>First name</label>
+                    <input class="form-control" />
+                  </div>
+                  <div class="col-6">
+                    <label>First name</label>
+                    <input class="form-control" />
+                  </div>
+                </div>
               </div>
             </div>
-
             <!-- /.card-footer-->
           </div>
           <!-- /.card -->
@@ -408,106 +414,6 @@
         <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->
-
-      <div class="modal fade" id="add-default">
-        <div class="modal-dialog">
-          <form id="new_additional_form">
-            <div class="modal-content">
-              <div class="modal-header bg-indigo">
-                <h4 class="modal-title">New Item</h4>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-6">
-                    <label>Item Name:</label
-                    ><input class="form-control" required />
-                  </div>
-                  <div class="col-6">
-                    <label>Item Price:</label
-                    ><input class="form-control" required />
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer justify-content-between">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="submit" class="btn btn-primary">
-                  Save
-                </button>
-              </div>
-            </div>
-          </form>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-
-      <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-          <form id="update_additional">
-            <div class="modal-content">
-              <div class="modal-header bg-info">
-                <h4 class="modal-title" id="additional_title"></h4>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-12">
-                    <label>Item Price:</label>
-                    <input id="item_id" hidden />
-                    <input
-                      class="form-control"
-                      id="new_item_price"
-                      placeholder="Enter new item price"
-                      required
-                    />
-                    <label>Status:</label>
-                    <select class="form-control">
-                      <option value='1'>Active</option>
-                      <option value='0'>Disable</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer justify-content-between">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="submit" class="btn btn-primary">
-                  Save changes
-                </button>
-              </div>
-            </div>
-          </form>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
 
       <footer class="main-footer">
         <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.2</div>
@@ -527,145 +433,31 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="../../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
+    <script src="../../../dist/js/demo.js"></script>
 
-    <script src="../../plugins/datatables/jquery.dataTables.js"></script>
-    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="../../../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-    <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
-    <script src="../../plugins/toastr/toastr.min.js"></script>
+    <!--<script src="../../plugins/daterangepicker/daterangepicker.js"></script> -->
+
+    <script src="./datepicker_files/jquery.datepicker2.js"></script>
+    <script src="../../../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../../../plugins/toastr/toastr.min.js"></script>
   </body>
+
   <script>
     $(document).ready(function () {
-      if (sessionStorage.getItem("user_info") == null)
-        window.location = "../../authentication/login.html";
+      let room_details = sessionStorage.getItem("walkin_room_details");
 
-      let table = $("#additional_table").DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-          url: "../../php_function/additional_categories/get_additional.php",
-          dataSrc: "",
-        },
-        columns: [
-          {
-            data: "additional_type",
-          },
-          {
-            data: "additional_amount",
-          },
-          {
-            data: "status",
-            render: function (data, type, full, meta) {
-              let status = data;
-              if (status == 1) {
-                return "<span style='height: 15px; width: 15px; border-radius: 50%; display: inline-block; background:#57DA4F;'></span>";
-              } else {
-                return "<span style='height: 15px; width: 15px; border-radius: 50%; display: inline-block; background:#FF5733;'></span>";
-              }
-            },
-          }
-        ],
-      });
-
-      $("#additional_table tbody").on("click", "tr", async function () {
-        console.log(table.row(this).data());
-        $("#modal-default").modal("show");
-
-        $("#item_id").val(table.row(this).data().additional_id);
-        $("#new_item_price").val(parseInt(table.row(this).data().additional_amount));
-        $("#additional_title").html(table.row(this).data().additional_type);
-      });
-
-      updateSuccess = () => {
-        $("#modal-default").modal("hide");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-
-        Toast.fire({
-          type: "success",
-          title: "Item Modified!",
-        });
-      };
-
-      $("#modal-default").on("hidden.bs.modal", function () {
-        table.ajax.reload();
-      });
-
-      $("#update_additional").submit((e) => {
-        e.preventDefault();
-
-        let item_id = e.target[1].value;
-        let item_price = e.target[2].value;
-        let status = e.target[3].value;
-
-
-        $.ajax({
-          url: "../../php_function/additional_categories/update_additional.php",
-          data:
-            "item_id=" +
-            item_id +
-            "&item_price=" +
-            item_price +
-            "&status=" +
-            status,
-          type: "POST",
-          success: function (response) {
-            updateSuccess();
-          },
-        }); 
-      });
-
-      addSuccess = () => {
-        $("#add-default").modal("hide");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-
-        Toast.fire({
-          type: "success",
-          title: "New item added!",
-        });
-      };
-
-      $("#add-default").on("hidden.bs.modal", function () {
-        table.ajax.reload();
-      });
-
-      $("#new_additional_form").submit((e) => {
-        e.preventDefault();
-
-        let item_name = e.target[1].value;
-        let item_price = e.target[2].value;
-
-        $.ajax({
-          url: "../../php_function/additional_categories/insert_additional.php",
-          data:
-            "item_name=" +
-            item_name +
-            "&item_price=" +
-            item_price,
-          type: "POST",
-          success: function (response) {
-            addSuccess();
-          },
-        });
-      });
+      console.log(room_details);
     });
   </script>
 </html>

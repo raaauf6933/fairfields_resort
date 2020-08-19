@@ -6,7 +6,7 @@
     <title>Admin | Check In</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/png" href="../../../img/icon.png" />
+    <link rel="icon" type="image/png" href="../../../img/icon.png" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -671,6 +671,42 @@
       </div>
       <!-- /.modal -->
 
+      <div class="modal fade" id="modal-image">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+              <h4 class="modal-title"></h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img
+                id="receipt_img"
+                class="img-fluid"
+                style="height: 700px; width: 100%; max-width: 500px;"
+              />
+            </div>
+            <div class="modal-footer justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
       <footer class="main-footer">
         <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.2</div>
         <strong
@@ -707,11 +743,8 @@
   </body>
   <script>
     $(document).ready(function () {
-      if (
-        sessionStorage.getItem("user_info") == null 
-      )
+      if (sessionStorage.getItem("user_info") == null)
         window.location = "../../authentication/login.html";
-
 
       let table = $("#checkin_table").DataTable({
         responsive: true,
@@ -752,6 +785,7 @@
 
       $("#checkin_table tbody").on("click", "tr", async function () {
         if (table.data().count() > 0) {
+          $("#receipts").dataTable().fnDestroy();
           $("#guest_additional").dataTable().fnDestroy();
           $("#modal-lg").modal("show");
           $("#reservation_id").html(table.row(this).data().reservation_id);
@@ -779,22 +813,43 @@
           var billing_id = table.row(this).data().billing_id;
           global_reservation_id = reservation_id;
           global_billing_id = billing_id;
-          $.ajax({
-            url: "../../php_function/checkin/get_upload_receipts.php",
-            data: "reservation_id=" + reservation_id,
-            type: "POST",
-            success: function (response) {
-              var upload_receipts = JSON.parse(response);
-              upload_receipts.map((e) => {
-                $("#receipts > tbody:last-child").append(
-                  "<tr class='guest_details'><td>" +
-                    e.receipt_photo_id +
-                    "</td><td>" +
-                    moment(e.upload_date).format("YYYY-MM-DD | hh:mm a") +
-                    "</td></tr>"
-                );
-              });
+
+          let table_receipts = $("#receipts").DataTable({
+            paging: false,
+            ordering: false,
+            info: false,
+            searching: false,
+            bAutoWidth: false,
+            responsive: true,
+            autoWidth: false,
+            ajax: {
+              url: "../../php_function/checkin/get_upload_receipts.php",
+              type: "POST",
+              dataSrc: "",
+              data: { reservation_id: reservation_id },
             },
+            columns: [
+              {
+                data: "receipt_photo_id",
+              },
+              {
+                data: "upload_date",
+                render: function (data, type, full, meta) {
+                  let status = data;
+                  return moment(status).format("YYYY-MM-DD hh:mm a");
+                },
+              },
+            ],
+          });
+
+          $("#receipts tbody").on("click", "tr", async function () {
+            $("#modal-image").modal("show");
+            $("#receipt_img").attr(
+              "src",
+              "../../dist/img/bank_receipts/" +
+                table_receipts.row(this).data().photo +
+                ""
+            );
           });
 
           $.ajax({
