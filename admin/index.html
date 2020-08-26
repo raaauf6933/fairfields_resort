@@ -7,7 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    	<link rel="icon" type="image/png" href="../img/icon.png" />
+    <link rel="icon" type="image/png" href="../img/icon.png" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
@@ -175,7 +175,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="index.html" class="brand-link">
           <div class="text-center">
             <img
               class="profile-user-img img-fluid img-circle"
@@ -198,7 +198,7 @@
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Juan Dela Cruz</a>
+              <a href="#" class="d-block" id="user_admin">Juan Dela Cruz</a>
             </div>
           </div>
 
@@ -230,8 +230,11 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/bookings/" class="nav-link">
-                      <i class="far fa-circle nav-icon text-info"></i>
+                    <a
+                      href="pages/bookings/walkin/select_date.html"
+                      class="nav-link"
+                    >
+                      <i class="fas fa-walking nav-icon text-info"></i>
                       <p>Walk - In</p>
                     </a>
                   </li>
@@ -241,7 +244,7 @@
                       href="pages/bookings/pending_bookings.html"
                       class="nav-link"
                     >
-                      <i class="far fa-circle nav-icon text-danger"></i>
+                      <i class="fas fa-user-clock nav-icon text-danger"></i>
                       <p>Pending Booking</p>
                     </a>
                   </li>
@@ -250,27 +253,34 @@
                       href="pages/bookings/confirmed_bookings.html"
                       class="nav-link"
                     >
-                      <i class="far fa-circle nav-icon text-success"></i>
+                      <i class="fas fa-user-tag nav-icon text-success"></i>
                       <p>Confirmed Booking</p>
                     </a>
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-item">
                     <a href="pages/bookings/rooms.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-warning"></i>
+                      <i class="fas fa-building nav-icon text-warning"></i>
                       <p>Rooms</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="pages/bookings/checkin.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-success"></i>
+                      <i class="fas fa-user-check nav-icon text-success"></i>
                       <p>Check-In</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="pages/bookings/checkout.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-danger"></i>
+                      <i class="fas fa-sign-out-alt nav-icon text-danger"></i>
                       <p>Check-Out</p>
+                    </a>
+                  </li>
+                  <div class="dropdown-divider"></div>
+                  <li class="nav-item">
+                    <a href="pages/bookings/expired_noshow.html" class="nav-link">
+                      <i class="fas fa-user-times nav-icon text-danger"></i>
+                      <p>Expired/Noshow</p>
                     </a>
                   </li>
                 </ul>
@@ -286,7 +296,7 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="pages/room_management/rooms.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-orange"></i>
+                      <i class="fas fa-bed nav-icon text-orange"></i>
                       <p>Rooms</p>
                     </a>
                   </li>
@@ -295,22 +305,28 @@
                       href="pages/room_management/room_categories.html"
                       class="nav-link"
                     >
-                      <i class="far fa-circle nav-icon text-warning"></i>
+                      <i class="fas fa-bed nav-icon text-warning"></i>
                       <p>Room Categories</p>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/additional_categories/additional_categories.html" class="nav-link">
-                 <i class="nav-icon fas fa-tags"></i>
+                <a
+                  href="pages/additional_categories/additional_categories.html"
+                  class="nav-link"
+                >
+                  <i class="nav-icon fas fa-tags"></i>
                   <p>
                     Additional/Extras
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/user_management/user_management.html" class="nav-link">
+                <a
+                  href="pages/user_management/user_management.html"
+                  class="nav-link"
+                >
                   <i class="nav-icon fas fa-user-cog"></i>
                   <p>
                     User Management

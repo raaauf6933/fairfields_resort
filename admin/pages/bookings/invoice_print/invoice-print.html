@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin | Invoice</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap 4 -->
+    <link rel="icon" type="image/png" href="../../../../img/icon.png" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="../../../plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.min.css" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+      rel="stylesheet"
+    />
+
+    <style>
+      #invoice td,
+      th {
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Main content -->
+      <section class="invoice">
+        <!-- title row -->
+        <div class="row">
+          <div class="col-12">
+            <h4>
+              <img
+                src="../../../dist/img/resort.png"
+                style="height: 80px;"
+                class="img-fluid"
+              />Fairfields Resort & Playhouse Inn
+              <!--<small class="float-right">Date: 2/10/2014</small>-->
+            </h4>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- info row -->
+        <div class="row invoice-info">
+          <div class="col-sm-4 invoice-col">
+            <h4>Guest Information</h4>
+            <address>
+              <strong id="guest_name"></strong><br />
+              <p class="m-0">Address: <strong id="guest_address"></strong></p>
+              <p class="m-0">Phone: <b id="guest_contact"></b></p>
+              <p class="m-0">Email: <b id="guest_email"></b></p>
+            </address>
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-4 invoice-col">
+            <h4>Booking Information</h4>
+            <address>
+              <p class="m-0">Check-in: <strong id="check_in"></strong></p>
+              <p class="m-0">Check-out: <strong id="check_out"></strong></p>
+              <p class="m-0">No. Night(s): <strong id="nights"></strong></p>
+              <p class="m-0">No. Guest: <strong id="guest_num"></strong></p>
+            </address>
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-4 invoice-col">
+            Reservation ID: <b id="reservation_id"></b><br />
+            Billing ID: <b id="billing_id"></b><br />
+            Guest ID: <b id="guest_id"></b><br />
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Table row -->
+        <div class="row">
+          <div class="col-12 table-responsive">
+            <table id="invoice" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Availed</th>
+                  <th>Rate</th>
+                  <th>Night(s)</th>
+                  <th>Qty</th>
+                  <th>Total Amount</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="3"></th>
+                  <th><h5>Vatable Sales</h5></th>
+                  <td><h5 id="vatable"></h5></td>
+                </tr>
+                <tr>
+                  <th colspan="3"></th>
+                  <th><h5>VAT (12%)</h5></th>
+                  <th><h5 id="vat"></h5></th>
+                </tr>
+                <tr>
+                  <th colspan="3"></th>
+                  <th><h5>Sub Total</h5></th>
+                  <th><h5 id="sub_total"></h5></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    <script src="../../../plugins/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(async function () {
+        let reservation_id = sessionStorage.getItem("rev_id_invoice");
+
+        let nights_;
+
+        await $.ajax({
+          url: "../../../php_function/invoice_print/get_guest_information.php",
+          data: "reservation_id=" + reservation_id,
+          type: "POST",
+          success: (response) => {
+            JSON.parse(response).map((e) => {
+              $("#guest_name").html(e.first_name + " " + e.last_name);
+              $("#guest_address").html(
+                e.addressline_1 + ", " + e.city + ", " + e.zipcode
+              );
+              $("#guest_contact").html(e.contact_number);
+              $("#guest_email").html(e.email);
+              $("#check_in").html(moment(e.checkin_date).format("LL"));
+              $("#check_out").html(moment(e.checkout_date).format("LL"));
+
+              let check_in = new Date(e.checkin_date);
+              let check_out = new Date(e.checkout_date);
+
+              let timediff = check_out.getTime() - check_in.getTime();
+              let nights = timediff / (1000 * 3600 * 24);
+              nights_ = nights;
+              $("#nights").html(nights);
+              $("#guest_num").html(e.num_guest);
+              $("#reservation_id").html(e.reservation_id);
+              $("#billing_id").html(e.billing_id);
+              $("#guest_id").html(e.guest_id);
+            });
+          },
+        });
+
+        let room_billing = 0;
+        $.ajax({
+          async: false,
+          url: "../../../php_function/invoice_print/get_room_billing.php",
+          data: "reservation_id=" + reservation_id,
+          type: "POST",
+          success: (response) => {
+            JSON.parse(response).map((e) => {
+              room_billing += parseInt(e.room_price);
+              $("#invoice > tbody").append(
+                "<tr><td>" +
+                  e.roomtype_name +
+                  "</td><td>" +
+                  e.room_price +
+                  "</td><td>" +
+                  nights_ +
+                  "</td><td>" +
+                  e.num_room +
+                  "</td><td>" +
+                  e.room_total +
+                  "</td></tr>"
+              );
+            });
+          },
+        });
+
+        let additional_billing = 0;
+        $.ajax({
+          async: false,
+          url: "../../../php_function/invoice_print/get_guest_additional.php",
+          data: "reservation_id=" + reservation_id,
+          type: "POST",
+          success: (response) => {
+            JSON.parse(response).map((e) => {
+              additional_billing += parseInt(e.additional_amount);
+              $("#invoice > tbody").append(
+                "<tr><td>" +
+                  e.description +
+                  "</td><td>" +
+                  e.rate +
+                  "</td><td></td><td>" +
+                  e.num_additional +
+                  "</td><td>" +
+                  e.additional_amount +
+                  "</td></tr>"
+              );
+            });
+          },
+        });
+
+        let subtotal = room_billing + additional_billing;
+        let vat = subtotal * 0.12;
+        let vatable = subtotal - vat;
+
+        $("#vatable").html("PHP " + vatable + ".00");
+        $("#vat").html("PHP " + vat + ".00");
+        $("#sub_total").html("PHP " + subtotal + ".00");
+
+        setTimeout(() => {
+          window.addEventListener("load", window.print());
+        }, 500);
+      });
+    </script>
+  </body>
+</html>

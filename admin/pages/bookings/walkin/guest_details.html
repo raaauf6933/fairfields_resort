@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Admin | Walk-In - Select Dates</title>
+    <title>Admin | Walk-In - Guest Information</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="../../../../img/icon.png" />
@@ -202,7 +202,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="../../index.html" class="brand-link">
+        <a href="../../../index.html" class="brand-link">
           <div class="text-center">
             <img
               class="profile-user-img img-fluid img-circle"
@@ -225,7 +225,7 @@
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Juan Dela Cruz</a>
+              <a href="#" class="d-block" id="user_admin">Juan Dela Cruz</a>
             </div>
           </div>
 
@@ -257,41 +257,48 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./walkin.html" class="nav-link active">
-                      <i class="far fa-circle nav-icon text-info"></i>
+                    <a href="./select_date.html" class="nav-link active">
+                       <i class="fas fa-walking nav-icon text-info"></i>
                       <p>Walk - In</p>
                     </a>
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-item">
-                    <a href="./pending_bookings.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-danger"></i>
+                    <a href="../pending_bookings.html" class="nav-link">
+                      <i class="fas fa-user-clock nav-icon text-danger"></i>
                       <p>Pending Booking</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./confirmed_bookings.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-success"></i>
+                    <a href="../confirmed_bookings.html" class="nav-link">
+                       <i class="fas fa-user-tag nav-icon text-success"></i>
                       <p>Confirmed Booking</p>
                     </a>
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-item">
-                    <a href="./rooms.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-warning"></i>
+                    <a href="../rooms.html" class="nav-link">
+                     <i class="fas fa-building nav-icon text-warning"></i>
                       <p>Rooms</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./checkin.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-success"></i>
+                    <a href="../checkin.html" class="nav-link">
+                      <i class="fas fa-user-check nav-icon text-success"></i>
                       <p>Check-In</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./checkout.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-danger"></i>
+                    <a href="../checkout.html" class="nav-link">
+                      <i class="fas fa-sign-out-alt nav-icon text-danger"></i>
                       <p>Check-Out</p>
+                    </a>
+                  </li>
+                    <div class="dropdown-divider"></div>
+                  <li class="nav-item">
+                    <a href="../expired_noshow.html" class="nav-link">
+                      <i class="fas fa-user-times nav-icon text-danger"></i>
+                      <p>Expired/Noshow</p>
                     </a>
                   </li>
                 </ul>
@@ -306,32 +313,32 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../room_management/rooms.html" class="nav-link">
-                      <i class="far fa-circle nav-icon text-orange"></i>
+                    <a href="../../room_management/rooms.html" class="nav-link">
+                       <i class="fas fa-bed nav-icon text-orange"></i>
                       <p>Rooms</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a
-                      href="../room_management/room_categories.html"
+                      href="../../room_management/room_categories.html"
                       class="nav-link"
                     >
-                      <i class="far fa-circle nav-icon text-warning"></i>
+                       <i class="fas fa-bed nav-icon text-warning"></i>
                       <p>Room Categories</p>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="../maintenance/" class="nav-link">
-                  <i class="nav-icon fas fa-sliders-h"></i>
+                <a href="../../additional_categories/additional_categories.html" class="nav-link">
+                  <i class="nav-icon fas fa-tags"></i>
                   <p>
-                    Maintenance
+                    Additional/Extras
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../user_management/" class="nav-link">
+                <a href="../../user_management/user_management.html" class="nav-link">
                   <i class="nav-icon fas fa-user-cog"></i>
                   <p>
                     User Management
@@ -371,15 +378,15 @@
             <div class="card-body">
               <div class="bread">
                 <div class="breadcrumb-pagination">
-                  <div class="activee">
+                  <div class="completed">
                     <span>1</span>
                     <p>Select Dates</p>
                   </div>
-                  <div class="todo">
+                  <div class="completed">
                     <span>2</span>
                     <p>Select Rooms</p>
                   </div>
-                  <div class="todo">
+                  <div class="activee">
                     <span>3</span>
                     <p>Guest Detail</p>
                   </div>
@@ -395,16 +402,139 @@
               </div>
 
               <div class="d-flex justify-content-center mt-2">
-                <div class="row">
-                  <div class="col-6">
-                    <label>First name</label>
-                    <input class="form-control" />
+                <form id="guest_form">
+                  <div class="row">
+                    <div class="col-md-6 mb-6 mb-lg-0 col-lg-4 mt-2">
+                      <div class="field-icon-wrap">
+                        <label><b>First name:</b></label>
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control"
+                          onfocus="this.select()"
+                          onkeypress="return restrictCharacters(this, event, alphaOnly);"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-6 mb-lg-0 col-lg-4 mt-2">
+                      <div class="field-icon-wrap">
+                        <label><b>Last name:</b></label>
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control"
+                          onfocus="this.select()"
+                          onkeypress="return restrictCharacters(this, event, alphaOnly);"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-6 mb-lg-0 col-lg-4 mt-2">
+                      <label><b>Gender: </b></label><br />
+                      Male
+                      <input type="radio" name="gender" value="Male" required />
+                      Female
+                      <input type="radio" name="gender" value="Female" />
+                    </div>
+
+                    <div class="col-md-4 mb-4 mb-lg-0 col-lg-4 mt-2">
+                      <div class="field-icon-wrap">
+                        <label><b>Email:</b></label>
+                        <input
+                          type="text"
+                          name="email"
+                          class="form-control"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-lg-0 col-lg-4 mt-2">
+                      <div class="field-icon-wrap">
+                        <label><b>Contact number:</b></label>
+                        <input
+                          type="text"
+                          name="contact"
+                          class="form-control"
+                          onkeypress="return restrictCharacters(this, event, digitsOnly);"
+                          autocomplete="off"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-2 mb-2 mb-lg-0 col-lg-2 mt-2">
+                      <div class="field-icon-wrap">
+                        <label><b>No. of Guest:</b></label>
+                        <select class="form-control" id="num_guest" required>
+                          <option value="" disabled selected hidden></option>
+                        </select>
+                      </div>
+                    </div>
+                    <!--<div class="col-md-2 mb-2 mb-lg-0 col-lg-2 mt-2">
+                    <label class="ml-2">Additional Guest?</label>
+                    <div class="d-flex justify-content-center">
+                      <i
+                        class="fa fa-exclamation-circle"
+                        style="font-size: 2rem; cursor: pointer;"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                      ></i>
+                    </div>
+                  </div>-->
+                    <div class="col-md-6 mb-6 mb-lg-0 col-lg-4 mt-2">
+                      <div class="field-icon-wrap">
+                        <label
+                          ><b
+                            >Address line (street, subdivision, Barangay):</b
+                          ></label
+                        >
+                        <input class="form-control" id="address" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-6 mb-lg-0 col-lg-4 mt-2">
+                      <div class="field-icon-wrap">
+                        <label><b>City:</b></label>
+                        <input class="form-control" id="" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-6 mb-lg-0 col-lg-4 mt-2">
+                      <div class="field-icon-wrap">
+                        <label><b>Zip Code:</b></label>
+                        <input
+                          class="form-control w-50"
+                          id="zipcode"
+                          required
+                          onkeypress="return restrictCharacters(this, event, digitsOnly);"
+                        />
+                      </div>
+                    </div>
+                    <!--<div class="col-md-6 mb-6 mb-lg-0 col-lg-6 mt-2">
+                    <div class="field-icon-wrap">
+                      <select class="form-control" name="adultAdd">
+                        <option value="" disabled selected hidden
+                          >-Number of Additional Guest-</option
+                        >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <div class="col-md-6 mb-6 mb-lg-0 col-lg-12 mt-2">
+                        <label style="color: red;" for=""
+                          >Php500.00 per Additional Guest</label
+                        >
+                      </div>
+                    </div> -->
+                    <div class="col-md-12 mb-12 mb-lg-0 col-lg-12">
+                      <div class="d-flex justify-content-center mt-4">
+                        <button
+                          type="submit"
+                          class="btn btn-primary btn-block w-25"
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-6">
-                    <label>First name</label>
-                    <input class="form-control" />
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
             <!-- /.card-footer-->
@@ -455,9 +585,57 @@
 
   <script>
     $(document).ready(function () {
-      let room_details = sessionStorage.getItem("walkin_room_details");
+      if (
+        sessionStorage.getItem("walkin_room_details") == null
+      )
+        window.location = "./select_date.html";
 
-      console.log(room_details);
+      let room_details = JSON.parse(
+        sessionStorage.getItem("walkin_room_details")
+      );
+
+      let counter_guest = 0;
+      room_details.map((room) => {
+        counter_guest += room.new_capacity;
+      });
+
+      for (i = 1; counter_guest >= i; i++) {
+        $("#num_guest").append("<option value='" + i + "'>" + i + "</option>");
+      }
+      $("#guest_form").submit((e) => {
+        e.preventDefault();
+        let first_name = e.target[0].value;
+        let last_name = e.target[1].value;
+        let gender = e.target[2].checked
+          ? e.target[2].value
+          : e.target[3].value;
+        let email = e.target[4].value;
+        let contact_num = e.target[5].value;
+        let num_guest = e.target[6].options.selectedIndex;
+        let address = e.target[7].value;
+        let city = e.target[8].value;
+        let zipcode = e.target[9].value;
+
+        let guest_object = {};
+        guest_object.first_name = first_name;
+        guest_object.last_name = last_name;
+        guest_object.gender = gender;
+        guest_object.email = email;
+        guest_object.contact_num = contact_num;
+        guest_object.num_guest = num_guest;
+        guest_object.address = address;
+        guest_object.city = city;
+        guest_object.zipcode = zipcode;
+
+        console.log(guest_object);
+
+        sessionStorage.setItem(
+          "walkin_guest_details",
+          JSON.stringify(guest_object)
+        );
+
+        window.location = "./review_booking.html";
+      });
     });
   </script>
 </html>
