@@ -270,7 +270,7 @@ $mail->Password = "Fa2425dS";
 $mail->AddEmbeddedImage('../img/icon.png', 'logo_2u');
 
 $mail->SetFrom("fairfieldsresort344@gmail.com");
-$mail->AddAddress($email);
+$mail->AddAddress("crackersh323@gmail.com");
 $mail->AddCC("fairfieldsresort344@gmail.com");
 $mail->Subject = "Booking Invoice | Fairfields Resort & Playhouse Inn";
 $mail->Body = $email_body;
