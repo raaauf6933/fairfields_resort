@@ -256,7 +256,7 @@ $mail->IsSMTP();
 $mail->CharSet = "UTF-8";
 $mail->Host = "smtp.gmail.com";
 $mail->SMTPDebug = 1;
-$mail->Port = 465; //465 or 587
+$mail->Port = 587; //465 or 587
 
 $mail->SMTPSecure = 'ssl';
 $mail->SMTPAuth = true;
