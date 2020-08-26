@@ -254,31 +254,33 @@ $mail = new PHPMailer\PHPMailer\PHPMailer();
 $mail->IsSMTP();
 
 $mail->CharSet = "UTF-8";
-$mail->Host = "relay-hosting.secureserver.net";
+$mail->Host = "sg3plcpnl0031.prod.sin3.secureserver.net";
+//$mail->SMTPAutoTLS = false; 
 $mail->SMTPDebug = 1;
 $mail->Port = 25; //465 or 587
 
-$mail->SMTPSecure = 'ssl';
-$mail->SMTPAuth = false;
+$mail->SMTPSecure = 'tsl';
+$mail->SMTPAuth = true;
 $mail->IsHTML(true);
 
 //Authentication
-$mail->Username = "fairfieldsresort344@gmail.com";
+$mail->Username = "desk.resort@fairfieldsresort.com";
 $mail->Password = "Fa2425dS";
 
 //Set Params
 $mail->AddEmbeddedImage('../img/icon.png', 'logo_2u');
 
-$mail->SetFrom("fairfieldsresort344@gmail.com");
-$mail->AddAddress("crackersh323@gmail.com");
-$mail->AddCC("fairfieldsresort344@gmail.com");
+$mail->SetFrom("desk.resort@fairfieldsresort.com", "FairFields Resort & Playhouse Inn");
+$mail->AddAddress($email);
+$mail->AddCC("desk.resort@fairfieldsresort.com");
 $mail->Subject = "Booking Invoice | Fairfields Resort & Playhouse Inn";
 $mail->Body = $email_body;
 
 
+
 if (!$mail->Send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
+  echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
-    echo "Message has been sent";
+  echo "Message has been sent";
 }
 ?>

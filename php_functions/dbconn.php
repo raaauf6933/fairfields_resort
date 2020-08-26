@@ -1,7 +1,7 @@
 <?php
 
-$dbUsername = "fairfields";
-$dbPassword = "fairfields";
+$dbUsername = "fairfields_db";
+$dbPassword = "fairfields_db";
 $dbServername = "localhost";
 $dbName = "fairfields_db";
 

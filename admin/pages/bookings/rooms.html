@@ -6,7 +6,7 @@
     <title>Admin | Room Map</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/png" href="../../../img/icon.png" />
+    <link rel="icon" type="image/png" href="../../../img/icon.png" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -232,42 +232,39 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="walkin/select_date.html" class="nav-link">
-                       <i class="fas fa-walking nav-icon text-info"></i>
+                      <i class="fas fa-walking nav-icon text-info"></i>
                       <p>Walk - In</p>
                     </a>
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-item">
                     <a href="./pending_bookings.html" class="nav-link">
-                     <i class="fas fa-user-clock nav-icon text-danger"></i>
+                      <i class="fas fa-user-clock nav-icon text-danger"></i>
                       <p>Pending Booking</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./confirmed_bookings.html" class="nav-link">
-                        <i class="fas fa-user-tag nav-icon text-success"></i>
+                      <i class="fas fa-user-tag nav-icon text-success"></i>
                       <p>Confirmed Booking</p>
                     </a>
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-item">
-                    <a
-                      href="./rooms.html"
-                      class="nav-link active"
-                    >
-                     <i class="fas fa-building nav-icon text-warning"></i>
+                    <a href="./rooms.html" class="nav-link active">
+                      <i class="fas fa-building nav-icon text-warning"></i>
                       <p>Rooms</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./checkin.html" class="nav-link">
-                       <i class="fas fa-user-check nav-icon text-success"></i>
+                      <i class="fas fa-user-check nav-icon text-success"></i>
                       <p>Check-In</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./checkout.html" class="nav-link">
-                       <i class="fas fa-sign-out-alt nav-icon text-danger"></i>
+                      <i class="fas fa-sign-out-alt nav-icon text-danger"></i>
                       <p>Check-Out</p>
                     </a>
                   </li>
@@ -300,14 +297,17 @@
                       href="../room_management/room_categories.html"
                       class="nav-link"
                     >
-                       <i class="fas fa-bed nav-icon text-warning"></i>
+                      <i class="fas fa-bed nav-icon text-warning"></i>
                       <p>Room Categories</p>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="../additional_categories/additional_categories.html" class="nav-link">
+                <a
+                  href="../additional_categories/additional_categories.html"
+                  class="nav-link"
+                >
                   <i class="nav-icon fas fa-sliders-h"></i>
                   <p>
                     Additional/Extras
@@ -315,7 +315,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../user_management/user_management.html" class="nav-link">
+                <a
+                  href="../user_management/user_management.html"
+                  class="nav-link"
+                >
                   <i class="nav-icon fas fa-user-cog"></i>
                   <p>
                     User Management
@@ -354,21 +357,19 @@
             <div class="card-body">
               <div class="row mb-4">
                 <div class="col-md-2">
-                  <label>Type:</label>
+                <!--  <label>Type:</label>
                   <select id="type" class="form-control">
                     <option value="2">Family Room</option>
-                  </select>
+                  </select>-->
                 </div>
                 <div class="col-md-8 d-flex justify-content-center">
-                  <h1>ROOM TYPE NAME</h1>
+                  <h1>ROOM MAP</h1>
                 </div>
               </div>
               <div id="room_row" class="row"></div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-              Footer
-            </div>
+           
             <!-- /.card-footer-->
           </div>
         </section>
@@ -409,7 +410,7 @@
                   <td class="text-danger" id="check_out"></td>
                 </tr>
               </table>
-              <div class="m-1 d-flex">
+             <!-- <div class="m-1 d-flex">
                 <div class="mr-auto p-2">
                   <h4 class="text-info">Additionals</h4>
                 </div>
@@ -477,15 +478,13 @@
                         </tr>
                       </table>
                     </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </div>
-              </div>
+                  </div> 
+                </div> 
+              </div> -->
             </div>
             <div class="modal-footer justify-content-left">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
-                Check-Out
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
               </button>
             </div>
           </div>
@@ -576,18 +575,15 @@
 
   <script>
     $(document).ready(function () {
-      if (
-        sessionStorage.getItem("user_info") == null 
-      )
+      if (sessionStorage.getItem("user_info") == null)
         window.location = "../../authentication/login.html";
 
-        
       $.ajax({
         url: "../../php_function/get_rooms.php",
         data: "roomtype_id=" + $("#type").val(),
         type: "POST",
         success: function (response) {
-          console.log(response)
+          console.log(response);
           var rooms_ = JSON.parse(response);
 
           console.log(rooms_);
@@ -630,7 +626,7 @@
               }
             }
 
-            /*if (room.status == 0) {
+            if (room.status == 0) {
               $("#room_row").append(
                 $(
                   "<div class='open-Modal col-2'><div class='card border shadow'style='width:11rem; height: 5rem; cursor:pointer;'><div class='card-body bg-success rounded' data-roomid=" +
@@ -656,7 +652,7 @@
                     "</b></h5></div></div></div>"
                 )
               );
-            } */
+            }
           });
 
           $(document).on("click", ".open-Modal", (e) => {
@@ -669,7 +665,6 @@
               $("#room_title").html(room_name);
               $("#reservation_id").html(reservation_id);
 
-
               $.ajax({
                 url: "../../php_function/room_map/get_reservation.php",
                 data: "reservation_id=" + reservation_id,
@@ -677,15 +672,15 @@
                 success: function (response) {
                   let reservation_details = JSON.parse(response);
 
-                  $("#guest_name").html(reservation_details.first_name + " " + reservation_details.last_name);
-                   $("#check_in").html(reservation_details.checkin_date)
-                    $("#check_out").html(reservation_details.checkout_date)
-
+                  $("#guest_name").html(
+                    reservation_details.first_name +
+                      " " +
+                      reservation_details.last_name
+                  );
+                  $("#check_in").html(reservation_details.checkin_date);
+                  $("#check_out").html(reservation_details.checkout_date);
                 },
               });
-
-
-
             } else {
             }
           });
