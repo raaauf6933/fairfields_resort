@@ -254,12 +254,13 @@ $mail = new PHPMailer\PHPMailer\PHPMailer();
 $mail->IsSMTP();
 
 $mail->CharSet = "UTF-8";
-$mail->Host = "smtp.gmail.com";
+$mail->Host = "localhost";
 $mail->SMTPDebug = 1;
-$mail->Port = 587; //465 or 587
+$mail->Port = 25; //465 or 587
 
 $mail->SMTPSecure = 'ssl';
-$mail->SMTPAuth = true;
+$mail->SMTPAuth = false;
+$mail->SMTPAutoTLS = false; 
 $mail->IsHTML(true);
 
 //Authentication
