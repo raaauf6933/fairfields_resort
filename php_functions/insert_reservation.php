@@ -254,7 +254,7 @@ $mail = new PHPMailer\PHPMailer\PHPMailer();
 $mail->IsSMTP();
 
 $mail->CharSet = "UTF-8";
-$mail->Host = "localhost";
+$mail->Host = "smtpout.secureserver.net";
 $mail->SMTPDebug = 1;
 $mail->Port = 465; //465 or 587
 
