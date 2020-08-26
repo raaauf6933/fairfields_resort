@@ -254,12 +254,12 @@ $mail = new PHPMailer\PHPMailer\PHPMailer();
 $mail->IsSMTP();
 
 $mail->CharSet = "UTF-8";
-$mail->Host = "smtpout.secureserver.net";
+$mail->Host = "relay-hosting.secureserver.net";
 $mail->SMTPDebug = 1;
-$mail->Port = 465; //465 or 587
+$mail->Port = 25; //465 or 587
 
 $mail->SMTPSecure = 'ssl';
-$mail->SMTPAuth = true;
+$mail->SMTPAuth = false;
 $mail->IsHTML(true);
 
 //Authentication
