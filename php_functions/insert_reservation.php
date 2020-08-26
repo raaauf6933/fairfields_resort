@@ -259,8 +259,7 @@ $mail->SMTPDebug = 1;
 $mail->Port = 465; //465 or 587
 
 $mail->SMTPSecure = 'ssl';
-$mail->SMTPAuth = false;
-$mail->SMTPAutoTLS = false; 
+$mail->SMTPAuth = true;
 $mail->IsHTML(true);
 
 //Authentication
