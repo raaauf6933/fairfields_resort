@@ -340,7 +340,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../reports/" class="nav-link">
+                <a href="../reports/reports.html" class="nav-link">
                   <i class="nav-icon fas fa-chart-area"></i>
                   <p>
                     Reports
@@ -360,7 +360,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Blank Page</h1>
+                <h1></h1>
               </div>
             </div>
           </div>
@@ -676,6 +676,8 @@
     $(document).ready(function () {
       if (sessionStorage.getItem("user_info") == null)
         window.location = "../../authentication/login.html";
+
+           $("#user_admin").html(JSON.parse(sessionStorage.getItem("user_info")).name);
 
       //get all pending bookings
       let table = $("#check_out").DataTable({

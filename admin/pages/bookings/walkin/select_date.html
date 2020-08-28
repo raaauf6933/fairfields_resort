@@ -240,11 +240,9 @@
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="../../../index.html" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
-                    Dashboard
-                  </p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item has-treeview menu-open">
@@ -258,7 +256,7 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="./select_date.html" class="nav-link active">
-                       <i class="fas fa-walking nav-icon text-info"></i>
+                      <i class="fas fa-walking nav-icon text-info"></i>
                       <p>Walk - In</p>
                     </a>
                   </li>
@@ -271,14 +269,14 @@
                   </li>
                   <li class="nav-item">
                     <a href="../confirmed_bookings.html" class="nav-link">
-                       <i class="fas fa-user-tag nav-icon text-success"></i>
+                      <i class="fas fa-user-tag nav-icon text-success"></i>
                       <p>Confirmed Booking</p>
                     </a>
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-item">
                     <a href="../rooms.html" class="nav-link">
-                     <i class="fas fa-building nav-icon text-warning"></i>
+                      <i class="fas fa-building nav-icon text-warning"></i>
                       <p>Rooms</p>
                     </a>
                   </li>
@@ -294,7 +292,7 @@
                       <p>Check-Out</p>
                     </a>
                   </li>
-                    <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
                   <li class="nav-item">
                     <a href="../expired_noshow.html" class="nav-link">
                       <i class="fas fa-user-times nav-icon text-danger"></i>
@@ -314,7 +312,7 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="../../room_management/rooms.html" class="nav-link">
-                       <i class="fas fa-bed nav-icon text-orange"></i>
+                      <i class="fas fa-bed nav-icon text-orange"></i>
                       <p>Rooms</p>
                     </a>
                   </li>
@@ -323,34 +321,34 @@
                       href="../../room_management/room_categories.html"
                       class="nav-link"
                     >
-                       <i class="fas fa-bed nav-icon text-warning"></i>
+                      <i class="fas fa-bed nav-icon text-warning"></i>
                       <p>Room Categories</p>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="../../additional_categories/additional_categories.html" class="nav-link">
+                <a
+                  href="../../additional_categories/additional_categories.html"
+                  class="nav-link"
+                >
                   <i class="nav-icon fas fa-tags"></i>
-                  <p>
-                    Additional/Extras
-                  </p>
+                  <p>Additional/Extras</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../user_management/user_management.html" class="nav-link">
+                <a
+                  href="../../user_management/user_management.html"
+                  class="nav-link"
+                >
                   <i class="nav-icon fas fa-user-cog"></i>
-                  <p>
-                    User Management
-                  </p>
+                  <p>User Management</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../reports/" class="nav-link">
+                <a href="../../reports/reports.html" class="nav-link">
                   <i class="nav-icon fas fa-chart-area"></i>
-                  <p>
-                    Reports
-                  </p>
+                  <p>Reports</p>
                 </a>
               </li>
             </ul>
@@ -402,8 +400,8 @@
               </div>
 
               <div class="d-flex justify-content-center mt-2">
-                <div class="card" style="width: 40rem;">
-                  <div class="card-body" style="background: #d8dfe5;">
+                <div class="card" style="width: 40rem">
+                  <div class="card-body" style="background: #d8dfe5">
                     <form id="date_sub">
                       <div class="row">
                         <div class="col-6">
@@ -412,7 +410,7 @@
                             name="date"
                             id="from"
                             data-select="datepicker"
-                            style="font-size: 25px; font-weight: 500;"
+                            style="font-size: 25px; font-weight: 500"
                             class="form-control pl-2 text-center"
                             placeholder="Enter check-in date"
                             readonly
@@ -425,7 +423,7 @@
                             name="date"
                             id="to"
                             data-select="datepicker"
-                            style="font-size: 25px; font-weight: 500;"
+                            style="font-size: 25px; font-weight: 500"
                             class="form-control pl-2 text-center"
                             placeholder="Enter check-out date"
                             readonly
@@ -434,9 +432,7 @@
                         </div>
                         <div class="col-12 mt-3">
                           <div class="d-flex justify-content-center">
-                            <button class="btn btn-primary">
-                              Submit
-                            </button>
+                            <button class="btn btn-primary">Submit</button>
                           </div>
                         </div>
                       </div>
@@ -493,6 +489,13 @@
 
   <script>
     $(document).ready(function () {
+      if (sessionStorage.getItem("user_info") == null)
+        window.location = "../../../authentication/login.html";
+
+      $("#user_admin").html(
+        JSON.parse(sessionStorage.getItem("user_info")).name
+      );
+
       error = () => {
         const Toast = Swal.mixin({
           toast: true,
@@ -553,14 +556,19 @@
           moment($("#to").val()).format("YYYY-MM-DD")
         ) {
           warning();
-        }else{
-        //session_save
-        sessionStorage.setItem("walkin_checkin", moment($("#from").val()).format("YYYY-MM-DD"));
-        sessionStorage.setItem("walkin_checkout",  moment($("#to").val()).format("YYYY-MM-DD"));
+        } else {
+          //session_save
+          sessionStorage.setItem(
+            "walkin_checkin",
+            moment($("#from").val()).format("YYYY-MM-DD")
+          );
+          sessionStorage.setItem(
+            "walkin_checkout",
+            moment($("#to").val()).format("YYYY-MM-DD")
+          );
 
-        window.location = "./select_rooms.html";
+          window.location = "./select_rooms.html";
         }
-
       });
     });
   </script>

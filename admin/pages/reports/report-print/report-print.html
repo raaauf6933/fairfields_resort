@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Fairfields Report</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap 4 -->
+    <link rel="icon" type="image/png" href="../../../../img/icon.png" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="../../../plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.min.css" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+      rel="stylesheet"
+    />
+
+    <style>
+      #invoice td,
+      th {
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Main content -->
+      <section class="invoice">
+        <!-- title row -->
+        <div class="row">
+          <div class="col-12">
+            <h2>
+              <img
+                src="../../../dist/img/resort.png"
+                style="height: 80px"
+                class="img-fluid"
+              />Fairfields Resort & Playhouse Inn
+              <small class="float-right">Date created: <strong id="date_created"></strong></small>
+            </h2>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- info row -->
+        <div class="row invoice-info">
+          <div class="col-sm-6 invoice-col">
+            <address>
+              <strong id="guest_name"></strong><br />
+              <h4 class="m-0">
+                Padilla St. San Carlos City, Pangasinan, Philippines
+              </h4>
+              <h4 class="m-0">(63) 935-536-0312</h4>
+              <h4 class="m-0">fairfieldsresort@yahoo.com</h4>
+            </address>
+            <h1 class="ml-3" id="report_type"></h1>
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-6 invoice-col text-center">
+            <address>
+              <label>From:</label>
+              <h4><b>2020-08-01</b></h4>
+              <label>To:</label>
+              <h4><b>2020-08-01</b></h4>
+            </address>
+          </div>
+          <!-- /.col -->
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Table row -->
+        <div class="row">
+          <div class="col-12 table-responsive">
+            <table id="invoice" class="table table-striped table-sm">
+              <thead class="table-bordered">
+                <tr>
+                  <th>Reservation ID</th>
+                  <th>Guest ID</th>
+                  <th>Guest Name</th>
+                  <th>No. Room</th>
+                  <th>No. Guest</th>
+                  <th>Check-in Date</th>
+                  <th>Check-out Date</th>
+                  <th>Status</th>
+                  <th>Total Amount</th>
+                  <th>Total Payed</th>
+                </tr>
+              </thead>
+              <tbody class="table-bordered"></tbody>
+              <tfoot class="table-borderless">
+                <tr>
+                  <td style="height: 50px"></td>
+                </tr>
+                <tr>
+                  <th><h5>Number of Reservation:</h5></th>
+                  <td id="num_reservation"></td>
+                </tr>
+                <tr>
+                  <th><h5>Number of Rooms Reserved:</h5></th>
+                  <td id="num_room"></td>
+                </tr>
+                <tr>
+                  <th><h5>Number of Guest:</h5></th>
+                  <td id="num_guest"></td>
+                </tr>
+                <tr>
+                  <th>
+                    <h5><b>Total Amount:</b></h5>
+                  </th>
+                  <td>
+                    <h5><b id="total_amount"></b></h5>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <h5><b>Total Sales:</b></h5>
+                  </th>
+                  <td>
+                    <h5><b id="total_sales"></b></h5>
+                  </td>
+                  <td colspan="4"></td>
+                  <td colspan="2"><h5>Prepared By:</h5></td>
+                  <td colspan="2">
+                    <h5><u id="user_admin">si papa mo</u></h5>
+                  </td>
+                </tr>
+              </tfoot>
+              <!-- <tfoot>
+                <tr>
+                  <th colspan="7"></th>
+                  <th><h5>Vatable Sales</h5></th>
+                  <td><h5 id="vatable"></h5></td>
+                </tr>
+                <tr>
+                  <th colspan="7"></th>
+                  <th><h5>VAT (12%)</h5></th>
+                  <th><h5 id="vat"></h5></th>
+                </tr>
+                <tr>
+                  <th colspan="7"></th>
+                  <th><h5>Sub Total</h5></th>
+                  <th><h5 id="sub_total"></h5></th>
+                </tr>
+              </tfoot>-->
+            </table>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    <script src="../../../plugins/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(async function () {
+         if (sessionStorage.getItem("user_info") == null)
+        window.location = "../../../authentication/login.html";
+        
+      $("#user_admin").html(
+        JSON.parse(sessionStorage.getItem("user_info")).name
+      );
+
+
+
+        let report_type = sessionStorage.getItem("report_type");
+        let from = sessionStorage.getItem("report_from");
+        let to = sessionStorage.getItem("report_to");
+
+        $("#report_type").html(report_type);
+        let date_now = Date.now();
+        $("#date_created").html(moment(date_now).format('YYYY/MM/DD'))
+
+        let num_reservation = 0;
+        let num_room = 0;
+        let num_guest = 0;
+        let total_amount = 0;
+        let total_sales = 0;
+        $.ajax({
+          async: false,
+          url: "../../../php_function/report/get_reports.php",
+          data: "report_type=" + report_type + "&from=" + from + "&to=" + to,
+          type: "POST",
+          success: (response) => {
+            sts = (val) => {
+              if (val == 0) {
+                return "<i>pending</i>";
+              } else if (val == 1) {
+                return "<i>pending w/ receipt</i>";
+              } else if (val == 3) {
+                return "<i>expired</i>";
+              } else if (val == 4) {
+                return "<i>confirmed</i>";
+              } else if (val == 5) {
+                return "<i>no show</i>";
+              } else if (val == 6) {
+                return "<i>check-in</i>";
+              } else {
+                return "<i>check-out</i>";
+              }
+            };
+
+            if (JSON.parse(response).length == 0) {
+              $("#invoice > tbody").append(
+                "<tr><td colspan='10'>No data avaialable</td></tr>"
+              );
+            } else {
+              JSON.parse(response).map((e) => {
+                num_reservation += 1;
+                num_room += parseInt(e.num_rooms);
+                num_guest += parseInt(e.num_guest);
+                total_amount += parseInt(e.total_amount);
+                total_sales += parseInt(e.total_payed);
+                $("#invoice > tbody").append(
+                  "<tr><td>" +
+                    e.reservation_id +
+                    "</td><td>" +
+                    e.guest_id +
+                    "</td><td>" +
+                    e.first_name +
+                    " " +
+                    e.last_name +
+                    "</td><td>" +
+                    e.num_rooms +
+                    "</td><td>" +
+                    e.num_guest +
+                    "</td><td>" +
+                    e.checkin_date +
+                    "</td><td>" +
+                    e.checkout_date +
+                    "</td><td>" +
+                    sts(e.status) +
+                    "</td><td>" +
+                    e.total_amount +
+                    "</td><td>" +
+                    e.total_payed +
+                    "</td></tr>"
+                );
+              });
+            }
+
+            $("#num_reservation").html(num_reservation);
+            $("#num_room").html(num_room);
+            $("#num_guest").html(num_guest);
+            $("#total_amount").html(total_amount);
+            $("#total_sales").html(total_sales);
+          },
+        });
+
+        setTimeout(() => {
+          window.addEventListener("load", window.print());
+        }, 500); 
+      });
+    </script>
+  </body>
+</html>

@@ -326,7 +326,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../reports/" class="nav-link">
+                <a href="../reports/reports.html" class="nav-link">
                   <i class="nav-icon fas fa-chart-area"></i>
                   <p>
                     Reports
@@ -577,7 +577,7 @@
     $(document).ready(function () {
       if (sessionStorage.getItem("user_info") == null)
         window.location = "../../authentication/login.html";
-
+   $("#user_admin").html(JSON.parse(sessionStorage.getItem("user_info")).name);
       $.ajax({
         url: "../../php_function/get_rooms.php",
         data: "roomtype_id=" + $("#type").val(),
