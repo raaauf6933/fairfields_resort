@@ -21,6 +21,8 @@ while ($row = mysqli_fetch_assoc($query_payment)) {
     $total_payed += $row['payed_capital'];
 }
 
+
+
 $balance = $total_amount - $total_payed;
 
 

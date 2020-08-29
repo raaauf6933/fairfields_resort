@@ -3,11 +3,11 @@ include "../dbconn.php";
 
 $billing_id = $_POST['billing_id'];
 
-$sql = mysqli_query($conn, "SELECT * FROM billing where billing_id = '$billing_id'");
+$sql = mysqli_query($conn, "SELECT billing_id,SUM(original_capital) as original_capital
+FROM billing
+where billing_id = '$billing_id'
+GROUP BY billing_id");
 
-$data = array();
 while ($row = mysqli_fetch_assoc($sql)) {
-    array_push($data, $row);
+    echo json_encode($row['original_capital']);
 }
-
-echo json_encode($data);

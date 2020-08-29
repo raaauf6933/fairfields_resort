@@ -3,7 +3,7 @@ include "../dbconn.php";
 
 $reservation_id = $_POST['reservation_id'];
 
-$sql_guest_billing = mysqli_query($conn, "SELECT rv.reservation_id, SUM(b.original_capital) as original_capital, adt.additional_amount, p.payed_capital
+$sql_guest_billing = mysqli_query($conn, "SELECT rv.reservation_id, SUM(b.original_capital) as original_capital, coalesce(adt.additional_amount,0) as additional_amount, p.payed_capital
 from reservation rv
 left join billing b on b.billing_id = rv.billing_id
 left join

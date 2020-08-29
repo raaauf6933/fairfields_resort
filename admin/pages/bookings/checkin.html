@@ -604,6 +604,7 @@
                               <label>Amount Paid:</label>
                               <input id="billing_id" hidden />
                               <input
+                               onkeypress="return isNumberKey(event)"
                                 class="form-control"
                                 placeholder="Enter Amount"
                                 required
@@ -747,6 +748,8 @@
 
     <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="../../plugins/toastr/toastr.min.js"></script>
+
+        <script src="../../dist/js/scriptvalidation.js"></script>
   </body>
   <script>
     $(document).ready(function () {
@@ -862,7 +865,7 @@
             );
           });
 
-          $.ajax({
+          await $.ajax({
             url: "../../php_function/checkin/get_checkin_rooms.php",
             data: "reservation_id=" + reservation_id,
             type: "POST",
@@ -883,7 +886,7 @@
           });
 
           var total_amount_payed = 0;
-          $.ajax({
+         await $.ajax({
             url: "../../php_function/checkin/get_payment_history.php",
             data: "billing_id=" + billing_id,
             type: "POST",
@@ -951,10 +954,7 @@
             type: "POST",
             success: (response) => {
               var billing_pending = JSON.parse(response);
-              billing_pending.map((billing) => {
-                global_total_amount += parseFloat(billing.original_capital);
-              });
-
+                global_total_amount += parseFloat(billing_pending);
               $("#total_amount").html(global_total_amount);
             },
           });
@@ -1115,26 +1115,27 @@
 
       $("#checkin_form").submit((e) => {
         e.preventDefault();
+
         var payment_amt = parseInt(e.target[3].value);
-        if (payment_amt == global_balance) {
+
           $.ajax({
             url: "../../php_function/checkin/update_booking.php",
             data:
               "billing_id=" +
               global_billing_id +
-              "&balance=" +
-              global_balance +
               "&payed_capital=" +
               payment_amt,
             type: "POST",
-            success: function (response) {},
+            success: function (response) {
+                 if (response == '"1"') {
+              updateSuccess();
+            } else if (response == '"2"') {
+              updateHigh();
+            } else {
+              updateError();
+            }
+            },
           });
-          updateSuccess();
-        } else if (payment_amt > global_balance) {
-          updateHigh();
-        } else {
-          updateError();
-        }
       });
     });
   </script>

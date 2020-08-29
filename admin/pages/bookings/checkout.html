@@ -860,7 +860,6 @@ let global_reservation_id = 0;
             type: "POST",
             success: (response) => {
               var guest_billing = JSON.parse(response);
-              console.log(guest_billing);
               guest_billing.map((e) => {
                 total_amount += parseInt(e.original_capital);
                 total_amount += parseInt(e.additional_amount);
