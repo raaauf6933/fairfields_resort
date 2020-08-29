@@ -253,7 +253,7 @@ $email_body = '<html>
     $mail->AddEmbeddedImage('../../../img/icon.png', 'logo_2u');
 
     $mail->SetFrom("desk.resort@fairfieldsresort.com", "FairFields Resort & Playhouse Inn");
-    $mail->AddAddress($email);
+    $mail->AddAddress($guest_email);
     $mail->AddCC("desk.resort@fairfieldsresort.com");
     $mail->Subject = "Booking Confirmation | Fairfields Resort & Playhouse Inn";
     $mail->Body = $email_body;
