@@ -1,30 +1,4 @@
-<?php
-require("PHPMailer-master/src/PHPMailer.php");
-require("PHPMailer-master/src/SMTP.php");
-require("PHPMailer-master/src/Exception.php");
-
-
-$mail = new PHPMailer\PHPMailer\PHPMailer();
-$mail->IsSMTP();
-
-$mail->CharSet = "UTF-8";
-$mail->Host = "smtp.gmail.com";
-$mail->SMTPDebug = 1;
-$mail->Port = 465; //465 or 587
-
-$mail->SMTPSecure = 'ssl';
-$mail->SMTPAuth = true;
-$mail->IsHTML(true);
-
-//Authentication
-$mail->Username = "crackersh323@gmail.com";
-$mail->Password = "Hansel2020";
-
-//Set Params
-$mail->SetFrom("crackersh323@gmail.com");
-$mail->AddAddress("fairfieldsresort2020@gmail.com");
-$mail->Subject = "Test";
-$mail->Body = '<html>
+<html>
 <style>
 </style>
 <body style="background-color:#ffffff;font-family: Open Sans, sans-serif;font-size:100%;font-weight:400;line-height:1.4;color:#000;">
@@ -32,7 +6,7 @@ $mail->Body = '<html>
     <thead>
       <tr>
         <th style="text-align:left;" colspan="4"><img style="max-width: 70px;" src="cid:logo_2u" ><strong> Fairfields Resort & Playhouse Inn.</strong></th>
-        <th style="text-align:right;font-weight:400;">' . $reservation_date . '</th>
+        <th style="text-align:right;font-weight:400;">'.$reservation_date.'</th>
       </tr>
     </thead>
     <tbody>
@@ -41,7 +15,7 @@ $mail->Body = '<html>
       </tr>
       <tr>
         <td colspan="5" style="border: solid 1px #ddd; padding:10px 20px;">
-          <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:150px">Status</span><b style="color:green;font-weight:normal;margin:0">Confirmed</b></p>
+          <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:150px">Status</span><b style="color:red;font-weight:normal;margin:0">Pending</b></p>
           <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Reservation ID</span> ' . $reservation_id . '</p>
           <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Booking Reference</span> ' . $booking_reference . '</p>
         </td>
@@ -66,7 +40,7 @@ $mail->Body = '<html>
         <th  style="font-size:14px; padding:10px; border-bottom: 3px solid #929090; border-top:3px solid #929090 ;">Qty</th>
         <th  style="font-size:14px; padding:10px; border-bottom: 3px solid #929090; border-top:3px solid #929090 ;">Total Amount</th>
       </tr>
-      ' . $room_rows . '
+      '. $room_rows.'
     </tbody>
     <tfooter>
       <tr style="text-align: center;">
@@ -75,7 +49,7 @@ $mail->Body = '<html>
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px;"><b>Vatable Sales</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px;">
-         Php ' . $vatable . '
+         Php '.$vatable.'
         </td>
       </tr>
         <tr style="text-align: center;">
@@ -84,7 +58,7 @@ $mail->Body = '<html>
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px;"><b>VAT (12%)</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px;">
-         Php ' . $vat . '
+         Php '.$vat.'
         </td>
       </tr>
         <tr style="text-align: center; ">
@@ -93,7 +67,7 @@ $mail->Body = '<html>
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/"><b>Subtotal</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/">
-         Php ' . $total_amount . '
+         Php '.$total_amount.'
         </td>
       </tr>
       
@@ -125,7 +99,7 @@ $mail->Body = '<html>
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/ color:navy"><b>Payed Amount</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/color:navy">
-         Php ' . $downpayment . '
+         Php '.$downpayment.'
         </td>
       </tr>
       <tr style="text-align: center;  ">
@@ -134,29 +108,33 @@ $mail->Body = '<html>
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/ color:navy"><b>Balance</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/color:navy">
-         Php ' . $downpayment . '
+         Php '.$downpayment.'
         </td>
       </tr>
     </tfooter>
     <tr>
         <td style="height: 3rem;"></td>
     </tr>
-
-  
-    <tr> <td colspan="5" style="color: #6b6b6b;">* This is auto generated email, Do not reply.</td></tr>
+    <tr >
+        <td colspan="5"><b style="font-family:Arial, Helvetica, sans-serif; ">HOW TO PAY?</b></td>
+    </tr>
+    <tr>
+        <td colspan="5" style="color: #6b6b6b;">* Payment is available only for Bank Deposit</td>
+       
+    </tr>
+    <tr> <td colspan="5" style="color: #6b6b6b;">* Deposit your 50% Downpayment to bank, <br/>and upload your picture of bank receipt here <a href="http://fairfieldsresort.com/my_booking.html" target="_blank">My Booking</a></td></tr>
     
-  
-    
-
+    <tr>
+        <td style="height: 1rem;"></td>
+    </tr>
+      <tr >
+        <td colspan="5"><b style="font-family:Arial, Helvetica, sans-serif; ">POLICY & CONDITIONS</b></td>
+    </tr>
+    <tr><td colspan="5" style="color:#6b6b6b">*You need to pay your 50% downpayment before payment due, else your booking will be voided</td></tr>
+    <tr><td colspan="5" style="color:#6b6b6b">*Downpayment is strictly 50% of the Total amount only</td></tr>
+    <tr><td colspan="5" style="color:#6b6b6b">*No Cancellation/Re-book once the booking is paid</td></tr>
+    <tr><td colspan="5" style="color:#6b6b6b">*No Refund</td></tr>
   </table>
 </body>
 
-</html>';
-
-
-if (!$mail->Send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-} else {
-    echo "Message has been sent";
-}
-?>
+</html>

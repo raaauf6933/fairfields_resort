@@ -580,7 +580,7 @@
                 >
                   Close
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" id="btn-submit">
                   Check-in
                 </button>
               </div>
@@ -843,6 +843,7 @@ let rev_id = 0;
           $("#balance").html(balance);
 
           $("#modal-lg").on("hidden.bs.modal", function () {
+              $("#btn-submit").removeAttr("disabled", "disabled");
             table.ajax.reload();
             $(".guest_details").remove();
           });
@@ -899,6 +900,8 @@ let rev_id = 0;
         e.preventDefault();
         var billing_id = e.target[1].value;
         var payment_amt = parseInt(e.target[2].value);
+        $("#btn-submit").attr("disabled", "disabled");
+
 
         $.ajax({
           url: "../../php_function/confirmed_booking/update_booking.php",

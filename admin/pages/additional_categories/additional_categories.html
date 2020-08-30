@@ -451,7 +451,7 @@
                 >
                   Close
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" id="btn-save">
                   Save
                 </button>
               </div>
@@ -504,7 +504,7 @@
                 >
                   Close
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" id="btn-update">
                   Save changes
                 </button>
               </div>
@@ -608,12 +608,13 @@
       };
 
       $("#modal-default").on("hidden.bs.modal", function () {
+         $("#btn-update").removeAttr("disabled","disabled");
         table.ajax.reload();
       });
 
       $("#update_additional").submit((e) => {
         e.preventDefault();
-
+        $("#btn-update").attr("disabled","disabled");
         let item_id = e.target[1].value;
         let item_price = e.target[2].value;
         let status = e.target[3].value;
@@ -652,11 +653,12 @@
 
       $("#add-default").on("hidden.bs.modal", function () {
         table.ajax.reload();
+        $("#btn-save").removeAttr("disabled","disabled");
       });
 
       $("#new_additional_form").submit((e) => {
         e.preventDefault();
-
+        $("#btn-save").attr("disabled","disabled");
         let item_name = e.target[1].value;
         let item_price = e.target[2].value;
 

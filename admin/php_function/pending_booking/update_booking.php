@@ -118,7 +118,6 @@ $email_body = '<html>
           <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:150px">Status</span><b style="color:green;font-weight:normal;margin:0">Confirmed</b></p>
           <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Reservation ID</span> ' . $reservation_id . '</p>
           <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Booking Reference</span> ' . $booking_reference . '</p>
-          
         </td>
       </tr>
       
@@ -129,7 +128,7 @@ $email_body = '<html>
           <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Phone</span> ' . $guest_phone . '</p>
         </td>
         <td style="width:50%;padding:20px;vertical-align:top" colspan="2">
-          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Address</span> ' .$guest_address. '</p>
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Address</span> ' . $guest_address . '</p>
           <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Number of gusets</span> ' . $num_guest . '</p>
           <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Duration of your vacation</span><div style="font-size: 17px; color:mediumblue; font-weight: bold;"><small>' . $check_in . '</small>  to <small>' . $check_out . '.</small></p>
         </td>
@@ -141,7 +140,7 @@ $email_body = '<html>
         <th  style="font-size:14px; padding:10px; border-bottom: 3px solid #929090; border-top:3px solid #929090 ;">Qty</th>
         <th  style="font-size:14px; padding:10px; border-bottom: 3px solid #929090; border-top:3px solid #929090 ;">Total Amount</th>
       </tr>
-     '.$room_rows.'
+      ' . $room_rows . '
     </tbody>
     <tfooter>
       <tr style="text-align: center;">
@@ -203,7 +202,7 @@ $email_body = '<html>
          Php ' . $payed_capital . '
         </td>
       </tr>
-       <tr style="text-align: center;  ">
+      <tr style="text-align: center;  ">
           <td></td>
           <td></td>
           <td></td>
@@ -216,11 +215,13 @@ $email_body = '<html>
     <tr>
         <td style="height: 3rem;"></td>
     </tr>
+
+  
+    <tr> <td colspan="5" style="color: #6b6b6b;">* This is auto generated email, Do not reply.</td></tr>
     
-    <tr>
-        <td colspan="5" style="color: #6b6b6b;">*This is auto generated email, Do not reply.</td>
-       
-    </tr>
+  
+    
+
   </table>
 </body>
 
@@ -258,14 +259,8 @@ $email_body = '<html>
     $mail->Subject = "Booking Confirmation | Fairfields Resort & Playhouse Inn";
     $mail->Body = $email_body;
 
-
-
-    if (!$mail->Send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
-    } else {
-        echo "Message has been sent";
-    }
-
+    $mail->Send();
+    
 
 }elseif($payed_capital > $total_amount){
     echo json_encode('2');

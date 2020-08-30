@@ -625,7 +625,7 @@
                 >
                   Close
                 </button>
-                <button type="submit" class="btn btn-danger">
+                <button type="submit" class="btn btn-danger" id="btn-submit">
                   Check-out
                 </button>
               </div>
@@ -976,6 +976,7 @@
             global_billing_id = 0;
             table.ajax.reload();
             $(".guest_details").remove();
+             $("#btn-submit").removeAttr("disabled", "disabled");
           });
 
           //additional_type_modal
@@ -1064,6 +1065,7 @@
 
         $("#modal-additional").on("hidden.bs.modal", function () {
           //table.ajax.reload();
+          
           $(".additional_type").remove();
         });
       });
@@ -1115,7 +1117,7 @@
 
       $("#checkin_form").submit((e) => {
         e.preventDefault();
-
+    $("#btn-submit").attr("disabled", "disabled");
         var payment_amt = parseInt(e.target[3].value);
 
           $.ajax({

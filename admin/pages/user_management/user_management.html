@@ -469,7 +469,7 @@
                 >
                   Close
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" id="btn-save">
                   Save
                 </button>
               </div>
@@ -539,7 +539,7 @@
                 >
                   Close
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" id="btn-update">
                   Save changes
                 </button>
               </div>
@@ -652,12 +652,13 @@
       };
 
       $("#modal-default").on("hidden.bs.modal", function () {
+        $("#btn-update").removeAttr("disabled","disabled");
         table.ajax.reload();
       });
 
       $("#update_user").submit((e) => {
         e.preventDefault();
-
+        $("#btn-update").attr("disabled","disabled");
         let user_id = e.target[1].value;
         let username = e.target[4].value;
         let password = e.target[5].value;
@@ -698,11 +699,12 @@
 
       $("#add-default").on("hidden.bs.modal", function () {
         table.ajax.reload();
+         $("#btn-save").removeAttr("disabled","disabled");
       });
 
       $("#new_account_form").submit((e) => {
         e.preventDefault();
-
+        $("#btn-save").attr("disabled","disabled");
         let first_name = e.target[1].value;
         let last_name = e.target[2].value;
         let username = e.target[3].value;
