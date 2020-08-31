@@ -293,10 +293,9 @@ left join
 (
 select 
   rv.reservation_id as reservation_id,
-  SUM(adt.additional_amount) as additional_amount
+  SUM(ga.additional_amount) as additional_amount
   from reservation rv
   left join guest_additional ga on ga.reservation_id = rv.reservation_id
-  left join additional_type adt on adt.additional_id = ga.additional_id
   group by rv.reservation_id
 ) adt on adt.reservation_id = rv.reservation_id
 

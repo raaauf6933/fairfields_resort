@@ -4,7 +4,6 @@ $(document).ready(function () {
 
     $("#user_admin").html(JSON.parse(sessionStorage.getItem("user_info")).name);
 
-
     let table = $("#checkin_table").DataTable({
         responsive: true,
         autoWidth: false,
@@ -48,9 +47,7 @@ $(document).ready(function () {
             $("#guest_additional").dataTable().fnDestroy();
             $("#modal-lg").modal("show");
             $("#reservation_id").html(table.row(this).data().reservation_id);
-            $("#booking_reference").html(
-                table.row(this).data().booking_reference
-            );
+            $("#booking_reference").html(table.row(this).data().booking_reference);
             $("#number_guest").html(table.row(this).data().num_guest);
             $("#name").html(
                 table.row(this).data().first_name +
@@ -209,6 +206,7 @@ $(document).ready(function () {
             $("#balance").html(global_balance);
 
             $("#modal-lg").on("hidden.bs.modal", function () {
+                $("#btn-submit").removeAttr("disabled", "disabled");
                 table.ajax.reload();
                 $(".guest_details").remove();
             });
@@ -259,7 +257,8 @@ $(document).ready(function () {
             },
         });
 
-        $(".add-additional").submit(function (e) {
+        $(".add-additional").submit(async function (e) {
+    
             $("#guest_additional").dataTable().fnDestroy();
             e.preventDefault();
             let reservation_id = e.target[0].value;
@@ -280,7 +279,7 @@ $(document).ready(function () {
                 });
             };
 
-            $.ajax({
+            await $.ajax({
                 url: "../../php_function/checkin/insert_guest_additional.php",
                 data:
                     "reservation_id=" +
@@ -291,6 +290,7 @@ $(document).ready(function () {
                     qty,
                 type: "POST",
                 success: (response) => {
+                    console.log("guest_additional response: " + response);
                     let guest_billing = JSON.parse(response);
                     guest_billing.map((e) => {
                         global_additional = parseInt(e.additional_amount);
@@ -334,6 +334,7 @@ $(document).ready(function () {
     };
 
     updateHigh = () => {
+        $("#btn-submit").removeAttr("disabled", "disabled");
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -348,6 +349,7 @@ $(document).ready(function () {
     };
 
     updateError = () => {
+        $("#btn-submit").removeAttr("disabled", "disabled");
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -368,11 +370,7 @@ $(document).ready(function () {
 
         $.ajax({
             url: "../../php_function/checkin/update_booking.php",
-            data:
-                "billing_id=" +
-                global_billing_id +
-                "&payed_capital=" +
-                payment_amt,
+            data: "billing_id=" + global_billing_id + "&payed_capital=" + payment_amt,
             type: "POST",
             success: function (response) {
                 if (response == '"1"') {

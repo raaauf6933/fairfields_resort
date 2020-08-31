@@ -15,9 +15,8 @@ while ($row = mysqli_fetch_assoc($query_billing)) {
     $total_amount += (int)$row['original_capital'];
 }
 
-$query_additional = mysqli_query($conn, "SELECT g.reservation_id, SUM(adt.additional_amount) as additional_amount
+$query_additional = mysqli_query($conn, "SELECT g.reservation_id, SUM(g.additional_amount) as additional_amount
 FROM guest_additional g
-left join additional_type adt on adt.additional_id = g.additional_id
 left join reservation rv on rv.reservation_id = g.reservation_id
 where rv.billing_id = '$billing_id'
 group by g.reservation_id");

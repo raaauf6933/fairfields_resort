@@ -11,10 +11,15 @@ $additional_amount = 0;
 
 $sql_additional = mysqli_query($conn, "SELECT * FROM additional_type WHERE additional_id = '$additional_id'");
 
+while($row = mysqli_fetch_array($sql_additional)){
+  $additional_type = $row['additional_type'];
+  $additional_amount = (int)$row['additional_amount'];
+}
 
 
 for($i=1; $qty >= $i; $i++){
-    $sql_insert = mysqli_query($conn, "INSERT INTO guest_additional (reservation_id,additional_id) VALUES ('$reservation_id','$additional_id')");
+    $sql_insert = mysqli_query($conn, "INSERT INTO guest_additional (reservation_id,additional_id,additional_type,additional_amount) 
+    VALUES ('$reservation_id','$additional_id','$additional_type','$additional_amount')");
 }
 
 
@@ -25,9 +30,8 @@ left join
 (
 select 
   ga.reservation_id as reservation_id,
-  SUM(adt.additional_amount) as additional_amount
+  SUM(ga.additional_amount) as additional_amount
   from guest_additional ga
-  left join additional_type adt on adt.additional_id = ga.additional_id
   where ga.reservation_id = '$reservation_id'
   group by ga.reservation_id
 ) adt on adt.reservation_id = rv.reservation_id
@@ -43,7 +47,6 @@ select p.billing_id as billing_id,
 where rv.reservation_id = '$reservation_id'
 group by rv.reservation_id");
 
-$sql_payment = mysqli_query($conn, "SELECT billing_id, SUM(payed_capital)");
 
 
 $data = array();

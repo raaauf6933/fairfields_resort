@@ -202,6 +202,7 @@ $(document).ready(function () {
     };
 
     updateHigh = () => {
+        $("#btn-submit").removeAttr("disabled", "disabled");
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -216,6 +217,7 @@ $(document).ready(function () {
     };
 
     updateError = () => {
+        $("#btn-submit").removeAttr("disabled", "disabled");
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",

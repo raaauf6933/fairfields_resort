@@ -173,7 +173,7 @@
           type: "POST",
           success: (response) => {
             JSON.parse(response).map((e) => {
-              room_billing += parseInt(e.room_price);
+              room_billing += parseInt(e.room_total);
               $("#invoice > tbody").append(
                 "<tr><td>" +
                   e.roomtype_name +
@@ -199,10 +199,11 @@
           type: "POST",
           success: (response) => {
             JSON.parse(response).map((e) => {
+        
               additional_billing += parseInt(e.additional_amount);
               $("#invoice > tbody").append(
                 "<tr><td>" +
-                  e.description +
+                  e.additional_type +
                   "</td><td>" +
                   e.rate +
                   "</td><td></td><td>" +
@@ -214,7 +215,7 @@
             });
           },
         });
-
+      console.log(room_billing)
         let subtotal = room_billing + additional_billing;
         let vat = subtotal * 0.12;
         let vatable = subtotal - vat;
@@ -224,7 +225,7 @@
         $("#sub_total").html("PHP " + subtotal + ".00");
 
         setTimeout(() => {
-          window.addEventListener("load", window.print());
+          //window.addEventListener("load", window.print());
         }, 500);
       });
     </script>
