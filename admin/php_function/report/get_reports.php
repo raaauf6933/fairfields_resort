@@ -17,7 +17,8 @@ rv.num_guest,
 rv.checkin_date, 
 rv.checkout_date, 
 rv.status,
-(SUM(rr.room_price) +coalesce(adt.additional_amount,0) )as total_amount,
+SUM(rr.room_price)as total_amount,
+coalesce(adt.additional_amount,0) as additional_amount,
 coalesce(p.payed_capital,0) as total_payed
 FROM reservation rv
 left join guest g on g.guest_id = rv.guest_id
@@ -71,7 +72,8 @@ rv.num_guest,
 rv.checkin_date, 
 rv.checkout_date, 
 rv.status,
-(SUM(rr.room_price) +coalesce(adt.additional_amount,0) )as total_amount,
+SUM(rr.room_price)as total_amount,
+coalesce(adt.additional_amount,0) as additional_amount,
 coalesce(p.payed_capital,0) as total_payed
 FROM reservation rv
 left join guest g on g.guest_id = rv.guest_id
@@ -124,7 +126,8 @@ rv.num_guest,
 rv.checkin_date, 
 rv.checkout_date, 
 rv.status,
-(SUM(rr.room_price) +coalesce(adt.additional_amount,0) )as total_amount,
+SUM(rr.room_price)as total_amount,
+coalesce(adt.additional_amount,0) as additional_amount,
 coalesce(p.payed_capital,0) as total_payed
 FROM reservation rv
 left join guest g on g.guest_id = rv.guest_id
@@ -177,7 +180,8 @@ rv.num_guest,
 rv.checkin_date, 
 rv.checkout_date, 
 rv.status,
-(SUM(rr.room_price) +coalesce(adt.additional_amount,0) )as total_amount,
+SUM(rr.room_price)as total_amount,
+coalesce(adt.additional_amount,0) as additional_amount,
 coalesce(p.payed_capital,0) as total_payed
 FROM reservation rv
 left join guest g on g.guest_id = rv.guest_id
@@ -230,7 +234,8 @@ rv.num_guest,
 rv.checkin_date, 
 rv.checkout_date, 
 rv.status,
-(SUM(rr.room_price) +coalesce(adt.additional_amount,0) )as total_amount,
+SUM(rr.room_price)as total_amount,
+coalesce(adt.additional_amount,0) as additional_amount,
 coalesce(p.payed_capital,0) as total_payed
 FROM reservation rv
 left join guest g on g.guest_id = rv.guest_id
@@ -283,7 +288,8 @@ rv.num_guest,
 rv.checkin_date, 
 rv.checkout_date, 
 rv.status,
-(SUM(rr.room_price) +coalesce(adt.additional_amount,0) )as total_amount,
+SUM(rr.room_price)as total_amount,
+coalesce(adt.additional_amount,0) as additional_amount,
 coalesce(p.payed_capital,0) as total_payed
 FROM reservation rv
 left join guest g on g.guest_id = rv.guest_id
@@ -335,7 +341,8 @@ rv.num_guest,
 rv.checkin_date, 
 rv.checkout_date, 
 rv.status,
-(SUM(rr.room_price) +coalesce(adt.additional_amount,0) )as total_amount,
+SUM(rr.room_price)as total_amount,
+coalesce(adt.additional_amount,0) as additional_amount,
 coalesce(p.payed_capital,0) as total_payed
 FROM reservation rv
 left join guest g on g.guest_id = rv.guest_id

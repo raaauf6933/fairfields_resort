@@ -39,10 +39,11 @@ $query1 = "INSERT INTO `reservation` (`reservation_id`, `guest_id`, `billing_id`
 ('$reservation_id', '$guest_id', '$billing_id', '$reservation_date','$booking_reference','$num_guest', '$check_in', '$check_out', '$expiration_date', '$reservation_type', '$status')";
 $result2 = mysqli_query($conn, $query1);
 
-$now = time(); // or your date as well
-$your_date = strtotime("2020-08-01");
-$datediff = $check_in - $check_out;
-$nights = round($datediff / (60 * 60 * 24));
+
+$earlier = new DateTime($check_in);
+$later = new DateTime($check_out);
+$nights = $later->diff($earlier)->format("%a");
+
 
 
 $room_array = json_decode($_POST['room_details']);
@@ -74,7 +75,7 @@ foreach ($room_array as $room_array) {
     $sql_billing = "INSERT INTO `billing` (`billing_id`, `original_capital`) VALUES ('$billing_id', '$room_array->new_price')";
     $resul_billing = mysqli_query($conn, $sql_billing);
 
-    $total_amount += (int)$room_array->new_price;
+    $total_amount += ((int)$room_array->new_price * (int)$nights);
     $room_rows .= '<tr style="text-align: center;">
         <td  style="padding:15px;">
           <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
@@ -98,7 +99,7 @@ foreach ($room_array as $room_array) {
         </td>
         <td  style="padding:15px;">
           <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
-            <span style="display:block;font-size:13px;font-weight:normal;">'. $room_array->new_price.'</span>
+            <span style="display:block;font-size:13px;font-weight:normal;">'. $room_array->new_price * (int)$nights.'</span>
           </p>
         </td>
   

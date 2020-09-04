@@ -308,6 +308,13 @@
       )
         window.location = "../index.html";
 
+        let date_from = new Date(sessionStorage.getItem("checkin_date"));
+        let date_to = new Date(sessionStorage.getItem("checkout_date"));
+
+        var Difference_In_Time = date_to.getTime() - date_from.getTime(); 
+        var nights = Difference_In_Time / (1000 * 3600 * 24); 
+ 
+
       let reqr_roomtype = (function () {
         var tmp = null;
         $.ajax({
@@ -430,7 +437,7 @@
           let roomtype_capacity = e.target[3].value;
           let num_rooms = e.target[4].options.selectedIndex;
 
-          let new_price = roomtype_price * num_rooms;
+          let new_price = (roomtype_price * num_rooms) * nights;
           let new_capacity = roomtype_capacity * num_rooms;
           let selected_object = {};
 

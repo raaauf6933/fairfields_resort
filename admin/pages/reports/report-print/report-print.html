@@ -48,7 +48,9 @@
                 style="height: 80px"
                 class="img-fluid"
               />Fairfields Resort & Playhouse Inn
-              <small class="float-right">Date created: <strong id="date_created"></strong></small>
+              <small class="float-right"
+                >Date created: <strong id="date_created"></strong
+              ></small>
             </h2>
           </div>
           <!-- /.col -->
@@ -170,14 +172,12 @@
 
     <script type="text/javascript">
       $(document).ready(async function () {
-         if (sessionStorage.getItem("user_info") == null)
-        window.location = "../../../authentication/login.html";
-        
-      $("#user_admin").html(
-        JSON.parse(sessionStorage.getItem("user_info")).name
-      );
+        if (sessionStorage.getItem("user_info") == null)
+          window.location = "../../../authentication/login.html";
 
-
+        $("#user_admin").html(
+          JSON.parse(sessionStorage.getItem("user_info")).name
+        );
 
         let report_type = sessionStorage.getItem("report_type");
         let from = sessionStorage.getItem("report_from");
@@ -185,7 +185,7 @@
 
         $("#report_type").html(report_type);
         let date_now = Date.now();
-        $("#date_created").html(moment(date_now).format('YYYY/MM/DD'))
+        $("#date_created").html(moment(date_now).format("YYYY/MM/DD"));
 
         let num_reservation = 0;
         let num_room = 0;
@@ -222,11 +222,20 @@
               );
             } else {
               JSON.parse(response).map((e) => {
+                let date_from = new Date(e.checkin_date);
+                let date_to = new Date(e.checkout_date);
+
+                var Difference_In_Time =
+                  date_to.getTime() - date_from.getTime();
+                var nights = Difference_In_Time / (1000 * 3600 * 24);
+
+                console.log(e.total_amount)
                 num_reservation += 1;
                 num_room += parseInt(e.num_rooms);
                 num_guest += parseInt(e.num_guest);
-                total_amount += parseInt(e.total_amount);
+                total_amount += (nights * parseInt(e.total_amount)) + parseInt(e.additional_amount);
                 total_sales += parseInt(e.total_payed);
+
                 $("#invoice > tbody").append(
                   "<tr><td>" +
                     e.reservation_id +
@@ -247,7 +256,7 @@
                     "</td><td>" +
                     sts(e.status) +
                     "</td><td>" +
-                    e.total_amount +
+                    ((e.total_amount * nights) +parseInt(e.additional_amount)) +
                     "</td><td>" +
                     e.total_payed +
                     "</td></tr>"
@@ -265,7 +274,7 @@
 
         setTimeout(() => {
           window.addEventListener("load", window.print());
-        }, 500); 
+        }, 500);
       });
     </script>
   </body>

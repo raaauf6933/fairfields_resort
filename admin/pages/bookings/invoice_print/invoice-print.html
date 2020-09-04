@@ -184,8 +184,8 @@
                   "</td><td>" +
                   e.num_room +
                   "</td><td>" +
-                  e.room_total +
-                  "</td></tr>"
+                  (e.room_total*nights_) +
+                  ".00</td></tr>"
               );
             });
           },
@@ -215,8 +215,7 @@
             });
           },
         });
-      console.log(room_billing)
-        let subtotal = room_billing + additional_billing;
+        let subtotal = (room_billing *nights_)+ additional_billing;
         let vat = subtotal * 0.12;
         let vatable = subtotal - vat;
 
