@@ -6,7 +6,7 @@
     <thead>
       <tr>
         <th style="text-align:left;" colspan="4"><img style="max-width: 70px;" src="cid:logo_2u" ><strong> Fairfields Resort & Playhouse Inn.</strong></th>
-        <th style="text-align:right;font-weight:400;">'.$reservation_date.'</th>
+        <th style="text-align:right;font-weight:400;"></th>
       </tr>
     </thead>
     <tbody>
@@ -16,21 +16,21 @@
       <tr>
         <td colspan="5" style="border: solid 1px #ddd; padding:10px 20px;">
           <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:150px">Status</span><b style="color:red;font-weight:normal;margin:0">Pending</b></p>
-          <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Reservation ID</span> ' . $reservation_id . '</p>
-          <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Booking Reference</span> ' . $booking_reference . '</p>
+          <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Reservation ID</span> </p>
+          <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Booking Reference</span> </p>
         </td>
       </tr>
       
       <tr>
         <td style="width:50%;padding:20px;vertical-align:top" colspan="3">
-          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px">Name</span> ' . $first_name . ' ' . $last_name . '</p>
-          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Email</span> ' . $email . '</p>
-          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Phone</span> ' . $contact_number . '</p>
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px">Name</span> </p>
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Email</span> </p>
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Phone</span> </p>
         </td>
         <td style="width:50%;padding:20px;vertical-align:top" colspan="2">
-          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Address</span> ' . $address . ', ' . $city . ', ' . $zipcode . '</p>
-          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Number of gusets</span> ' . $num_guest . '</p>
-          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Duration of your vacation</span><div style="font-size: 17px; color:mediumblue; font-weight: bold;"><small>' . $check_in . '</small>  to <small>' . $check_out . '.</small></p>
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Address</span></p>
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Number of gusets</span> </p>
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Duration of your vacation</span><div style="font-size: 17px; color:mediumblue; font-weight: bold;"><small></small>  to <small></small></p>
         </td>
       </tr>
       <tr  >
@@ -40,7 +40,34 @@
         <th  style="font-size:14px; padding:10px; border-bottom: 3px solid #929090; border-top:3px solid #929090 ;">Qty</th>
         <th  style="font-size:14px; padding:10px; border-bottom: 3px solid #929090; border-top:3px solid #929090 ;">Total Amount</th>
       </tr>
-      '. $room_rows.'
+ <tr style="text-align: center;">
+        <td  style="padding:15px;">
+          <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
+            <span style="display:block;font-size:13px;font-weight:normal;"></span>
+          </p>
+        </td>
+        <td  style="padding:15px;">
+          <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
+            <span style="display:block;font-size:13px;font-weight:normal;"></span>
+          </p>
+        </td>
+        <td  style="padding:15px;">
+          <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
+            <span style="display:block;font-size:13px;font-weight:normal;"></span>
+          </p>
+        </td>
+        <td  style="padding:15px;">
+          <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
+            <span style="display:block;font-size:13px;font-weight:normal;"></span>
+          </p>
+        </td>
+        <td  style="padding:15px;">
+          <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
+            <span style="display:block;font-size:13px;font-weight:normal;"></span>
+          </p>
+        </td>
+  
+      </tr>'
     </tbody>
     <tfooter>
       <tr style="text-align: center;">
@@ -49,7 +76,7 @@
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px;"><b>Vatable Sales</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px;">
-         Php '.$vatable.'
+   
         </td>
       </tr>
         <tr style="text-align: center;">
@@ -58,7 +85,7 @@
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px;"><b>VAT (12%)</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px;">
-         Php '.$vat.'
+   
         </td>
       </tr>
         <tr style="text-align: center; ">
@@ -67,7 +94,7 @@
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/"><b>Subtotal</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/">
-         Php '.$total_amount.'
+       
         </td>
       </tr>
       
@@ -99,7 +126,7 @@
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/ color:navy"><b>Payed Amount</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/color:navy">
-         Php '.$downpayment.'
+    
         </td>
       </tr>
       <tr style="text-align: center;  ">
@@ -108,7 +135,7 @@
           <td></td>
           <td style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/ color:navy"><b>Balance</b></td>
         <td colspan="1" style="font-size:14px;padding:10px 15px 0 15px; /*border-bottom: 3px solid #929090;*/color:navy">
-         Php '.$downpayment.'
+       
         </td>
       </tr>
     </tfooter>
