@@ -169,9 +169,8 @@ $(document).ready(function () {
         }
     });
 
-    let payment_amt= 0;
 
-    updateSuccess = () => {
+    updateSuccess = (val) => {
       
         const Toast = Swal.mixin({
             toast: true,
@@ -187,9 +186,10 @@ $(document).ready(function () {
 
         $.ajax({
             url: "../../php_function/pending_booking/send_email.php",
-            data: "billing_id=" + global_billing_id + "&payed_capital=" + payment_amt,
+            data: "billing_id=" + global_billing_id + "&payed_capital=" + val,
             type: "POST",
             success: function (response) {
+                console.log(response)
                 $("#modal-lg").modal("hide");
             },
         });
@@ -227,7 +227,7 @@ $(document).ready(function () {
     $("#pending_form").submit((e) => {
         e.preventDefault();
         var billing_id = e.target[1].value;
-         payment_amt = parseInt(e.target[2].value);
+        let payment_amt = parseInt(e.target[2].value);
         $("#btn-submit").attr("disabled", "disabled");
 
         $.ajax({
@@ -235,9 +235,8 @@ $(document).ready(function () {
             data: "billing_id=" + billing_id + "&payed_capital=" + payment_amt,
             type: "POST",
             success: function (response) {
-                console.log(response);
                 if (response == '"1"') {
-                    updateSuccess();
+                    updateSuccess(payment_amt);
                 } else if (response == '"2"') {
                     updateHigh();
                 } else {
