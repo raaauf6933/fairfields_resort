@@ -6,10 +6,10 @@ $roomtype_id = $_POST['roomtype_id'];
 
 $sql = mysqli_query(
     $conn,
-    "SELECT rm.*,rt.*,
-COALESCE((SELECT reservation_id FROM reservation where status=6),0) as reservation_id
-FROM rooms rm
-LEFT JOIN room_type rt on rt.roomtype_id = rm.roomtype_id"
+        "SELECT rm.*,rt.*,
+    COALESCE((SELECT reservation_id FROM reservation where status=6),0) as reservation_id
+    FROM rooms rm
+    LEFT JOIN room_type rt on rt.roomtype_id = rm.roomtype_id"
 );
 
 $data = array();

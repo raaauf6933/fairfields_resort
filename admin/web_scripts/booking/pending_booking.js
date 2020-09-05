@@ -171,7 +171,7 @@ $(document).ready(function () {
 
 
     updateSuccess = (val) => {
-      
+        $("#btn-submit").append('<div class="spinner-border text-light" style="width: 1em;height: 1em;"></div>');
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -189,7 +189,7 @@ $(document).ready(function () {
             data: "billing_id=" + global_billing_id + "&payed_capital=" + val,
             type: "POST",
             success: function (response) {
-                console.log(response)
+              console.log(response)
                 $("#modal-lg").modal("hide");
             },
         });

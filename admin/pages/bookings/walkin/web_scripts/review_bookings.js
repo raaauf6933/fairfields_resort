@@ -53,7 +53,7 @@ $(document).ready(function () {
             room.roomtype_name +
             "</td>" +
             "<td>PHP " +
-            room.new_price / room.num_rooms +
+            room.new_price / room.num_rooms/ nights +
             ".00</td>" +
             "<td>" +
             nights +
@@ -62,13 +62,13 @@ $(document).ready(function () {
             room.num_rooms +
             "</td>" +
             "<td>PHP " +
-            room.new_price * nights +
+            room.new_price +
             ".00</td>" +
             "</tr>"
         );
     });
 
-    let total_amount = sub_total * nights;
+    let total_amount = sub_total;
     let VAT = total_amount * 0.12;
     let vatable_sales = total_amount - VAT;
     let downpayment = total_amount / 2;

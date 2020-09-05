@@ -12,7 +12,8 @@ $(document).ready(function () {
 
             console.log(rooms_);
             rooms_.map((room) => {
-                if (room.staus == 1) {
+                if (room.status == 1) {
+                   
                     $("#room_row").append(
                         $(
                             "<div class='open-Modal col-2'><div class='card border shadow'style='width:11rem; height: 5rem; cursor:pointer;'><div class='card-body bg-secondary rounded' data-roomid=" +
@@ -24,6 +25,7 @@ $(document).ready(function () {
                     );
                 } else {
                     if (room.reservation_id == 0) {
+                    
                         $("#room_row").append(
                             $(
                                 "<div class='open-Modal col-2'><div class='card border shadow'style='width:11rem; height: 5rem; cursor:pointer;'><div class='card-body bg-success rounded' data-roomid=" +
@@ -34,6 +36,7 @@ $(document).ready(function () {
                             )
                         );
                     } else {
+           
                         $("#room_row").append(
                             $(
                                 "<div class='open-Modal col-2'><div class='card border shadow'style='width:11rem; height: 5rem; cursor:pointer;'><div class='card-body bg-danger rounded' data-roomid=" +
@@ -48,8 +51,8 @@ $(document).ready(function () {
                             )
                         );
                     }
-                }
-
+                } 
+/*
                 if (room.status == 0) {
                     $("#room_row").append(
                         $(
@@ -76,7 +79,7 @@ $(document).ready(function () {
                             "</b></h5></div></div></div>"
                         )
                     );
-                }
+                }*/
             });
 
             $(document).on("click", ".open-Modal", (e) => {

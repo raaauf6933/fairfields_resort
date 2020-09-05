@@ -153,13 +153,14 @@ $(document).ready(function () {
                 success: (response) => {
                     var billing_pending = JSON.parse(response);
 
-                    billing_pending.map((billing) => {
-                        total_amount += parseFloat(billing.original_capital);
-                    });
+                    console.log(billing_pending);
+          
+                        total_amount += parseFloat(response);
+          
                     downpayment = total_amount / 2;
 
                     $("#downpayment").html(downpayment);
-                    $("#total_amount").html(total_amount);
+                    $("#total_amount").html(billing_pending);
                 },
             });
 
