@@ -49,7 +49,7 @@ group by rr.roomtype_name,rr.room_price");
 
 $array_rooms = array();
 $room_rows = "";
-while ($row = mysqli_fetch_assoc($sql_rooms)) {
+while ($row = mysqli_fetch_array($sql_rooms)) {
     array_push($array_rooms, $row);
 }
 
