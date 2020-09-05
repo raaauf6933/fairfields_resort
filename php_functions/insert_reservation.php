@@ -75,7 +75,7 @@ foreach ($room_array as $room_array) {
     $sql_billing = "INSERT INTO `billing` (`billing_id`, `original_capital`) VALUES ('$billing_id', '$room_array->new_price')";
     $resul_billing = mysqli_query($conn, $sql_billing);
 
-    $total_amount += ((int)$room_array->new_price * (int)$nights);
+    $total_amount += (int)$room_array->new_price;
     $room_rows .= '<tr style="text-align: center;">
         <td  style="padding:15px;">
           <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
@@ -84,7 +84,7 @@ foreach ($room_array as $room_array) {
         </td>
         <td  style="padding:15px;">
           <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
-            <span style="display:block;font-size:13px;font-weight:normal;">' . $room_array->new_price / $room_array->num_rooms. '</span>
+            <span style="display:block;font-size:13px;font-weight:normal;">' . $room_array->new_price / $room_array->num_rooms / $nights. '</span>
           </p>
         </td>
         <td  style="padding:15px;">
@@ -99,7 +99,7 @@ foreach ($room_array as $room_array) {
         </td>
         <td  style="padding:15px;">
           <p style="font-size:14px;margin:0;padding:0px;font-weight:bold;">
-            <span style="display:block;font-size:13px;font-weight:normal;">'. $room_array->new_price * (int)$nights.'</span>
+            <span style="display:block;font-size:13px;font-weight:normal;">'. $room_array->new_price.'</span>
           </p>
         </td>
   

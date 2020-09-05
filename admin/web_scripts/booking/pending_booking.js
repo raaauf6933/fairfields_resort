@@ -55,6 +55,8 @@ $(document).ready(function () {
         ],
     });
 
+    let global_billing_id;
+
     $("#pending_booking tbody").on("click", "tr", async function () {
         if (table.data().count() > 0) {
             console.log(table.row(this).data());
@@ -81,6 +83,7 @@ $(document).ready(function () {
             );
             $("#billing_id").val(table.row(this).data().billing_id);
 
+            global_billing_id = table.row(this).data().billing_id;
             var reservation_id = table.row(this).data().reservation_id;
             var billing_id = table.row(this).data().billing_id;
 
@@ -166,8 +169,10 @@ $(document).ready(function () {
         }
     });
 
+    let payment_amt= 0;
+
     updateSuccess = () => {
-        $("#modal-lg").modal("hide");
+      
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -182,9 +187,10 @@ $(document).ready(function () {
 
         $.ajax({
             url: "../../php_function/pending_booking/send_email.php",
-            data: "billing_id=" + billing_id + "&payed_capital=" + payment_amt,
+            data: "billing_id=" + global_billing_id + "&payed_capital=" + payment_amt,
             type: "POST",
             success: function (response) {
+                $("#modal-lg").modal("hide");
             },
         });
     };
@@ -221,7 +227,7 @@ $(document).ready(function () {
     $("#pending_form").submit((e) => {
         e.preventDefault();
         var billing_id = e.target[1].value;
-        var payment_amt = parseInt(e.target[2].value);
+         payment_amt = parseInt(e.target[2].value);
         $("#btn-submit").attr("disabled", "disabled");
 
         $.ajax({
