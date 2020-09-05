@@ -215,9 +215,7 @@
               <li class="nav-item">
                 <a href="./index.html" class="nav-link active">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
-                    Dashboard
-                  </p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item has-treeview">
@@ -278,7 +276,10 @@
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-item">
-                    <a href="pages/bookings/expired_noshow.html" class="nav-link">
+                    <a
+                      href="pages/bookings/expired_noshow.html"
+                      class="nav-link"
+                    >
                       <i class="fas fa-user-times nav-icon text-danger"></i>
                       <p>Expired/Noshow</p>
                     </a>
@@ -317,9 +318,7 @@
                   class="nav-link"
                 >
                   <i class="nav-icon fas fa-tags"></i>
-                  <p>
-                    Additional/Extras
-                  </p>
+                  <p>Additional/Extras</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -328,17 +327,13 @@
                   class="nav-link"
                 >
                   <i class="nav-icon fas fa-user-cog"></i>
-                  <p>
-                    User Management
-                  </p>
+                  <p>User Management</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/reports/reports.html" class="nav-link">
                   <i class="nav-icon fas fa-chart-area"></i>
-                  <p>
-                    Reports
-                  </p>
+                  <p>Reports</p>
                 </a>
               </li>
             </ul>
@@ -363,7 +358,7 @@
               <!-- small card -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h2><b>0</b></h2>
+                  <h2><b id="num_pending"></b></h2>
 
                   <h4>
                     Pending <br />
@@ -373,7 +368,7 @@
                 <div class="icon">
                   <i class="far fa-calendar-times"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="./pages/bookings/pending_bookings.html" class="small-box-footer">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -383,7 +378,7 @@
               <!-- small card -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h2><b>0</b></h2>
+                  <h2><b id="num_confirmed"></b></h2>
 
                   <h4>
                     Confirmed<br />
@@ -393,7 +388,7 @@
                 <div class="icon">
                   <i class="far fa-calendar-check"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="./pages/bookings/confirmed_bookings.html" class="small-box-footer">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -403,7 +398,7 @@
               <!-- small card -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h2><b>0</b></h2>
+                  <h2><b id="num_room_using_today"></b></h2>
 
                   <h4>
                     No. of Rooms Using<br />
@@ -411,9 +406,9 @@
                   </h4>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-bed"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="./pages/bookings/checkin.html" class="small-box-footer">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -423,19 +418,17 @@
               <!-- small card -->
               <div class="small-box bg-orange">
                 <div class="inner">
-                  <h3>100</h3>
+                  <h3 id="num_vacant"></h3>
 
-                  <h4>
+                  <h4 class="mb-4">
                     No. of Vacant <br />
                     <div class="ml-5">Rooms Today</div>
                   </h4>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-chart-pie"></i>
+               <i class="fas fa-bed"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fas fa-arrow-circle-right"></i>
-                </a>
+               
               </div>
             </div>
             <!-- ./col -->
@@ -450,7 +443,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Pending Booking w/ Receipt</span>
-                  <span class="info-box-number">45</span>
+                  <span class="info-box-number" id="num_pending_picture"></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -464,8 +457,8 @@
                 ></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Confirmed Tomorrow</span>
-                  <span class="info-box-number">14</span>
+                  <span class="info-box-text">No. of check-in tomorrow</span>
+                  <span class="info-box-number" id="num_checkin"></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -475,12 +468,12 @@
             <div class="col-md-3 col-sm-6 col-12">
               <div class="info-box">
                 <span class="info-box-icon bg-warning"
-                  ><i class="far fa-copy"></i
+                  ><i class="fas fa-users"></i
                 ></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Uploads</span>
-                  <span class="info-box-number">13,648</span>
+                  <span class="info-box-text">No. of guest today</span>
+                  <span class="info-box-number" id="num_guest"></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -490,12 +483,12 @@
             <div class="col-md-3 col-sm-6 col-12">
               <div class="info-box">
                 <span class="info-box-icon bg-danger"
-                  ><i class="far fa-star"></i
+                  ><i class="fas fa-sign-out-alt"></i
                 ></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Likes</span>
-                  <span class="info-box-number">93,139</span>
+                  <span class="info-box-text">No. of check-out today</span>
+                  <span class="info-box-number" id="num_checkout"></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -541,7 +534,27 @@
       if (sessionStorage.getItem("user_info") == null)
         window.location = "authentication/login.html";
 
-        $("#user_admin").html(JSON.parse(sessionStorage.getItem("user_info")).name);
+      $("#user_admin").html(
+        JSON.parse(sessionStorage.getItem("user_info")).name
+      );
+
+      $.ajax({
+        url: "php_function/dashboard/get_items.php",
+        type: "POST",
+        success: function (response) {
+          console.log(JSON.parse(response));
+          JSON.parse(response).map((e) => {
+            $("#num_pending").html(e.pending_booking);
+            $("#num_confirmed").html(e.num_confirmed);
+            $("#num_room_using_today").html(e.num_checkout_today);
+            $("#num_vacant").html(e.no_vacant_today);
+            $("#num_pending_picture").html(e.pending_with_picture);
+            $("#num_checkin").html(e.confirmed_tommorow);
+            $("#num_guest").html(e.num_guest_today);
+            $("#num_checkout").html(e.num_checkout_today);
+          });
+        },
+      });
     });
   </script>
 </html>
