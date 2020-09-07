@@ -162,6 +162,7 @@ $(document).ready(function () {
             });
 
             $("#modal-lg").on("hidden.bs.modal", function () {
+                $(".loading").remove();
                 $("#btn-submit").removeAttr("disabled", "disabled");
                 table.ajax.reload();
                 $(".guest_details").remove();
@@ -171,7 +172,7 @@ $(document).ready(function () {
 
 
     updateSuccess = (val) => {
-        $("#btn-submit").append('<div class="spinner-border text-light" style="width: 1em;height: 1em;"></div>');
+        $("#btn-submit").append('<div class="loading spinner-border text-light" style="width: 1em;height: 1em;"></div>');
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -191,6 +192,7 @@ $(document).ready(function () {
             success: function (response) {
               console.log(response)
                 $("#modal-lg").modal("hide");
+                $(".loading").remove();
             },
         });
     };

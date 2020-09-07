@@ -6,8 +6,9 @@
     <meta name="keywords" content="Sona, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sona | Template</title>
+    <title>Fairfields Resort & Playhouse Inn | My Booking</title>
 
+     <link rel="icon" href="../img/icon.png" />
     <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap"
@@ -97,7 +98,7 @@
       <div class="top-social"></div>
       <ul class="top-widget">
         <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-        <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+        <li><i class="fa fa-envelope"></i> fairfieldsresort2020@gmail.com</li>
       </ul>
     </div>
     <!-- Offcanvas Menu Section End -->
@@ -110,7 +111,7 @@
             <div class="col-lg-2">
               <div class="logo">
                 <a href="../index.html">
-                  <img src="../img/logo1-removebg-preview.png" alt="" />
+                    <img src="../img/resort-logo.png" alt="" />
                 </a>
               </div>
             </div>
@@ -167,6 +168,9 @@
                       <h5 class="m-2">Check-Out: <b id="checkout"></b></h5>
                       <h5 class="m-2">
                         No. Night(s): <b id="num_nights">121</b>
+                      </h5>
+                       <h5 class="m-2">
+                        Booking Status: <b id="status"></b>
                       </h5>
                     </address>
                   </div>
@@ -269,7 +273,7 @@
               />
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary" id="btn-submit">
                 Save changes
               </button>
               <button
@@ -428,6 +432,13 @@
         },
       });
 
+      booking_status = (value) =>{
+        if(value==0 || value ==1){
+          return ("<span class='text-danger'>Pending</span>")
+        }else{
+          return ("<span class='text-success'>Confirmed</span>")
+        }
+      }
 
       $.ajax({
         url: "../php_functions/my_booking/get_guest_details.php",
@@ -443,6 +454,7 @@
             $("#guest_email").html(e.email);
             $("#checkin").html(e.checkin_date);
             $("#checkout").html(e.checkout_date);
+            $("#status").html(booking_status(e.status));
           });
         },
       });
@@ -505,18 +517,24 @@
 
       uploadSuccess = () => {
         $("#modal-sm").modal("hide");
+        $(".loading").remove();
         Swal.fire({
           icon: "success",
           title: "Bank Receipt Uploaded!",
         });
+
+        $("#btn-submit").removeAttr("disabled","disabled");
       };
 
       $("#modal-sm").on("hidden.bs.modal", function () {
         table_receipts.ajax.reload();
+         $("#btn-submit").removeAttr("disabled","disabled");
       });
 
       $("#upload_img_form").submit((e) => {
         e.preventDefault();
+        $("#btn-submit").attr("disabled","disabled");
+           $("#btn-submit").append('<div class="loading spinner-border text-light" style="width: 1em;height: 1em;"></div>');
         var fd = new FormData();
         let upload_image = $("#imgToUpload").prop("files")[0];
         fd.append("file", upload_image);
