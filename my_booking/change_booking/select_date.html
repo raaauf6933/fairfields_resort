@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sona Template" />
+    <meta name="keywords" content="Sona, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fairfields Resort & Playhouse Inn | My Booking</title>
+
+    <link rel="icon" href="../../img/icon.png" />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../datepicker_files/jquery.datepicker2.css" />
+    <link rel="stylesheet" href="../datepicker_files/breadcrumb.css" />
+
+    <link rel="stylesheet" href="../../admin/plugins/toastr/toastr.min.css" />
+    <link
+      rel="stylesheet"
+      href="../../admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="../../admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../../css/font-awesome.min.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/flaticon.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../../css/owl.carousel.min.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../../css/magnific-popup.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+    <style>
+      .table td,
+      th,
+      tbody,
+      thead {
+        text-align: center;
+        cursor: pointer;
+      }
+      .upload_image td,
+      th,
+      tbody,
+      thead {
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .modal {
+        overflow: auto !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+      <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="canvas-close">
+        <i class="icon_close"></i>
+      </div>
+      <nav class="mainmenu mobile-menu">
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../rooms.html">Rooms</a></li>
+          <li><a href="../../about-us.html">Gallery</a></li>
+          <li><a href="../../blog-details.html">About Us</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li class="active">
+            <a href="../Mybooking.html">
+              My Booking
+              <i class="fa fa-search" aria-hidden="true"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+      <div id="mobile-menu-wrap"></div>
+      <div class="top-social"></div>
+      <ul class="top-widget">
+        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+        <li><i class="fa fa-envelope"></i> fairfieldsresort2020@gmail.com</li>
+      </ul>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+      <div class="menu-item">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+              <div class="logo">
+                <a href="../../index.html">
+                  <img src="../../img/resort-logo.png" alt="" />
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-10">
+              <div class="nav-menu">
+                <nav class="mainmenu">
+                  <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../rooms.html">Rooms</a></li>
+                    <li>
+                      <a href="../../about-us.html">Gallery</a>
+                    </li>
+                    <li>
+                      <a href="../../blog-details.html">About Us</a>
+                    </li>
+                    <li><a href="../../contact.html">Contact</a></li>
+                    <li class="active">
+                      <a href="../../contact.html">
+                        My Booking
+                        <i class="fa fa-search" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="card shadow bg-muted" style="width: 40rem">
+            <div class="card-header bg-white">
+              <h3>Select Date</h3>
+            </div>
+            <div class="card-body">
+              <div class="select-date card">
+                <div class="card-body" style="background: #ffffff">
+                  <form id="date_sub">
+                    <div class="row">
+                      <div class="col-6">
+                        <label>From:</label>
+                        <input
+                          name="date"
+                          id="from"
+                          data-select="datepicker"
+                          style="font-size: 25px; font-weight: 500"
+                          class="form-control pl-2 text-center"
+                          placeholder="Enter check-in date"
+                          readonly
+                          required
+                        />
+                      </div>
+                      <div class="col-6">
+                        <label>To:</label>
+                        <input
+                          name="date"
+                          id="to"
+                          data-select="datepicker"
+                          style="font-size: 25px; font-weight: 500"
+                          class="form-control pl-2 text-center"
+                          placeholder="Enter check-out date"
+                          readonly
+                          required
+                        />
+                      </div>
+                     
+                      <div class="col-12 d-flex justify-content-center">
+                        <button class="btn btn-primary mt-3">Confirm</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-text">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="ft-about">
+                <div class="logo">
+                  <a href="#">
+                    <img src="../img/name-logo.png" alt="" class="ml-n3" />
+                  </a>
+                </div>
+                <div class="fa-social">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+              <div class="ft-contact">
+                <h6>Contact Us</h6>
+                <ul>
+                  <li>(63) 93 5536 0312</li>
+                  <li>fairfieldsresort@yahoo.com</li>
+                  <li>Padilla St. 2420 San Carlos City, Pangasinan</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-option">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="co-text">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <script src="../../js/jquery.nice-select.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <script src="../../js/jquery.slicknav.js"></script>
+    <script src="../../js/owl.carousel.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../admin/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../../admin/plugins/toastr/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <script src="../datepicker_files/jquery.datepicker2.js"></script>
+    <script src="../../admin/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../../admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  </body>
+
+  <script>
+    $(document).ready(() => {
+        let guest_id = sessionStorage.getItem("my_booking_guestid");
+      if (guest_id == null || guest_id == undefined)
+        window.location = "../../my_booking.html";
+
+
+       error = () => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+        });
+
+        Toast.fire({
+            type: "error",
+            title: "Invalid input dates, please select again",
+        });
+    };
+
+    warning = () => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+        });
+
+        Toast.fire({
+            type: "warning",
+            title: "Minimum of 1 day bookings",
+        });
+    };
+
+    info = () => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+        });
+
+        Toast.fire({
+            type: "info",
+            title: "Please input booking date",
+        });
+    };
+
+    $("#date_sub").submit((e) => {
+        e.preventDefault();
+
+        console.log($("#from").val());
+        console.log($("#to").val());
+
+        if (
+            moment($("#from").val()).format("YYYY-MM-DD") >
+            moment($("#to").val()).format("YYYY-MM-DD")
+        ) {
+            error();
+        } else if ($("#from").val() == "" || $("#to").val() == "") {
+            info();
+        } else if (
+            moment($("#from").val()).format("YYYY-MM-DD") ==
+            moment($("#to").val()).format("YYYY-MM-DD")
+        ) {
+            warning();
+        } else {
+            //session_save
+            sessionStorage.setItem(
+                "change_checkin",
+                moment($("#from").val()).format("YYYY-MM-DD")
+            );
+            sessionStorage.setItem(
+                "change_checkout",
+                moment($("#to").val()).format("YYYY-MM-DD")
+            );
+
+            window.location = "./select_rooms.html";
+        }
+    });
+    });
+  </script>
+</html>

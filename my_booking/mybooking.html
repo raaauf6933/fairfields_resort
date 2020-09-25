@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fairfields Resort & Playhouse Inn | My Booking</title>
 
-     <link rel="icon" href="../img/icon.png" />
+    <link rel="icon" href="../img/icon.png" />
     <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap"
@@ -18,6 +18,9 @@
       href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="./datepicker_files/jquery.datepicker2.css" />
+    <link rel="stylesheet" href="./datepicker_files/breadcrumb.css" />
 
     <link rel="stylesheet" href="../admin/plugins/toastr/toastr.min.css" />
     <link
@@ -111,7 +114,7 @@
             <div class="col-lg-2">
               <div class="logo">
                 <a href="../index.html">
-                    <img src="../img/resort-logo.png" alt="" />
+                  <img src="../img/resort-logo.png" alt="" />
                 </a>
               </div>
             </div>
@@ -169,9 +172,7 @@
                       <h5 class="m-2">
                         No. Night(s): <b id="num_nights">121</b>
                       </h5>
-                       <h5 class="m-2">
-                        Booking Status: <b id="status"></b>
-                      </h5>
+                      <h5 class="m-2">Booking Status: <b id="status"></b></h5>
                     </address>
                   </div>
                   <div class="col-12">
@@ -183,12 +184,12 @@
                       >
                         <i class="fa fa-image"></i> UPLOAD BANK RECEIPT
                       </button>
-                      <button class="btn btn-primary ml-1">
+                      <a
+                        class="btn btn-primary ml-1 text-light"
+                      href="change_booking/select_date.html"
+                      >
                         <i class="fa fa-undo"></i> CHANGE BOOKING
-                      </button>
-                      <button class="btn btn-primary ml-1">
-                        <i class="fa fa-print"></i> PRINT
-                      </button>
+                    </a>
                     </div>
                   </div>
                 </div>
@@ -307,10 +308,18 @@
             </button>
           </div>
           <div class="modal-body">
-              <img id="receipt_img"  class="img-fluid"  style="height: 700px; width: 100%; max-width: 500px;" />
+            <img
+              id="receipt_img"
+              class="img-fluid"
+              style="height: 700px; width: 100%; max-width: 500px"
+            />
           </div>
           <div class="modal-footer justify-content-end">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
               Close
             </button>
           </div>
@@ -330,7 +339,7 @@
               <div class="ft-about">
                 <div class="logo">
                   <a href="#">
-                  <img src="../img/name-logo.png" alt="" class="ml-n3"/>
+                    <img src="../img/name-logo.png" alt="" class="ml-n3" />
                   </a>
                 </div>
                 <div class="fa-social">
@@ -395,7 +404,7 @@
     <script src="../admin/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="../admin/plugins/toastr/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
-
+    <script src="./datepicker_files/jquery.datepicker2.js"></script>
     <script src="../admin/plugins/datatables/jquery.dataTables.js"></script>
     <script src="../admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 
@@ -404,15 +413,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </body>
 
+
   <script>
     $(document).ready(() => {
+      let billing_id = sessionStorage.getItem("my_booking_billingid");
       let guest_id = sessionStorage.getItem("my_booking_guestid");
       if (guest_id == null || guest_id == undefined)
         window.location = "../my_booking.html";
 
-        console.log(guest_id);
+    
 
-        let reservation_id = 0;
+      let reservation_id = 0;
 
       $.ajax({
         url: "../php_functions/my_booking/get_rooms.php",
@@ -432,13 +443,13 @@
         },
       });
 
-      booking_status = (value) =>{
-        if(value==0 || value ==1){
-          return ("<span class='text-danger'>Pending</span>")
-        }else{
-          return ("<span class='text-success'>Confirmed</span>")
+      booking_status = (value) => {
+        if (value == 0 || value == 1) {
+          return "<span class='text-danger'>Pending</span>";
+        } else {
+          return "<span class='text-success'>Confirmed</span>";
         }
-      }
+      };
 
       $.ajax({
         url: "../php_functions/my_booking/get_guest_details.php",
@@ -504,15 +515,15 @@
         ],
       });
 
-
       $("#upload_image tbody").on("click", "tr", async function () {
         //$("#guest_additional").dataTable().fnDestroy();
         $("#modal-image").modal("show");
         $("#receipt_img").attr(
           "src",
-          "../admin/dist/img/bank_receipts/" + table_receipts.row(this).data().photo + ""
+          "../admin/dist/img/bank_receipts/" +
+            table_receipts.row(this).data().photo +
+            ""
         );
-        
       });
 
       uploadSuccess = () => {
@@ -523,18 +534,20 @@
           title: "Bank Receipt Uploaded!",
         });
 
-        $("#btn-submit").removeAttr("disabled","disabled");
+        $("#btn-submit").removeAttr("disabled", "disabled");
       };
 
       $("#modal-sm").on("hidden.bs.modal", function () {
         table_receipts.ajax.reload();
-         $("#btn-submit").removeAttr("disabled","disabled");
+        $("#btn-submit").removeAttr("disabled", "disabled");
       });
 
       $("#upload_img_form").submit((e) => {
         e.preventDefault();
-        $("#btn-submit").attr("disabled","disabled");
-           $("#btn-submit").append('<div class="loading spinner-border text-light" style="width: 1em;height: 1em;"></div>');
+        $("#btn-submit").attr("disabled", "disabled");
+        $("#btn-submit").append(
+          '<div class="loading spinner-border text-light" style="width: 1em;height: 1em;"></div>'
+        );
         var fd = new FormData();
         let upload_image = $("#imgToUpload").prop("files")[0];
         fd.append("file", upload_image);

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sona Template" />
+    <meta name="keywords" content="Sona, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fairfields Resort & Playhouse Inn | My Booking</title>
+
+    <link rel="icon" href="../../img/icon.png" />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../datepicker_files/jquery.datepicker2.css" />
+    <link rel="stylesheet" href="../datepicker_files/breadcrumb.css" />
+
+    <link rel="stylesheet" href="../../admin/plugins/toastr/toastr.min.css" />
+    <link
+      rel="stylesheet"
+      href="../../admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="../../admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../../css/font-awesome.min.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/flaticon.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../../css/owl.carousel.min.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../../css/magnific-popup.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+    <style>
+      .table td,
+      th,
+      tbody,
+      thead {
+        text-align: center;
+        cursor: pointer;
+      }
+      .upload_image td,
+      th,
+      tbody,
+      thead {
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .modal {
+        overflow: auto !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+      <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="canvas-close">
+        <i class="icon_close"></i>
+      </div>
+      <nav class="mainmenu mobile-menu">
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../rooms.html">Rooms</a></li>
+          <li><a href="../../about-us.html">Gallery</a></li>
+          <li><a href="../../blog-details.html">About Us</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li class="active">
+            <a href="../Mybooking.html">
+              My Booking
+              <i class="fa fa-search" aria-hidden="true"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+      <div id="mobile-menu-wrap"></div>
+      <div class="top-social"></div>
+      <ul class="top-widget">
+        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+        <li><i class="fa fa-envelope"></i> fairfieldsresort2020@gmail.com</li>
+      </ul>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+      <div class="menu-item">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+              <div class="logo">
+                <a href="../../index.html">
+                  <img src="../../img/resort-logo.png" alt="" />
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-10">
+              <div class="nav-menu">
+                <nav class="mainmenu">
+                  <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../rooms.html">Rooms</a></li>
+                    <li>
+                      <a href="../../about-us.html">Gallery</a>
+                    </li>
+                    <li>
+                      <a href="../../blog-details.html">About Us</a>
+                    </li>
+                    <li><a href="../../contact.html">Contact</a></li>
+                    <li class="active">
+                      <a href="../../contact.html">
+                        My Booking
+                        <i class="fa fa-search" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="card">
+            <div class="card-header bg-white">
+              <h3>Select Rooms</h3>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="table_rooms" class="table">
+                  <thead>
+                    <tr>
+                      <th>Room</th>
+                      <th>Rate</th>
+                      <th>Max Capacity</th>
+                      <th>Description</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="card-body">
+                <h4 class="m-2">Invoice</h4>
+                <form id="add-room" class=".add-room"></form>
+                <table class="table table-bordered table-sm ml-2" id="invoice">
+                  <thead>
+                    <tr>
+                      <th>Room</th>
+                      <th>Qty</th>
+                      <th>Price</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+                <div class="p-2 mt-2">
+                  <div class="dropdown-divider"></div>
+                  <div class="d-flex justify-content-center">
+                    <button class="btn btn-info mr-2" id="continue">
+                      Continue
+                    </button>
+                    <button
+                      class="btn btn-danger ml-2"
+                      id="reset"
+                      onClick="window.location.reload()"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <div class="modal fade" id="num_guest-modal-sm">
+      <div class="modal-dialog modal-sm">
+        <form id="confirm_room">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Guest Number</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label>Number of Guest:</label>
+              <select id="num_guest" class="form-control" required>
+                <option value="" hidden disabled selected>
+                  Enter no. guest
+                </option>
+              </select>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </form>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Footer Section Begin -->
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-text">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="ft-about">
+                <div class="logo">
+                  <a href="#">
+                    <img src="../img/name-logo.png" alt="" class="ml-n3" />
+                  </a>
+                </div>
+                <div class="fa-social">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+              <div class="ft-contact">
+                <h6>Contact Us</h6>
+                <ul>
+                  <li>(63) 93 5536 0312</li>
+                  <li>fairfieldsresort@yahoo.com</li>
+                  <li>Padilla St. 2420 San Carlos City, Pangasinan</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-option">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="co-text">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <script src="../../js/jquery.nice-select.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <script src="../../js/jquery.slicknav.js"></script>
+    <script src="../../js/owl.carousel.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../admin/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../../admin/plugins/toastr/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <script src="../datepicker_files/jquery.datepicker2.js"></script>
+    <script src="../../admin/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../../admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  </body>
+
+  <script>
+    $(document).ready(() => {
+      let guest_id = sessionStorage.getItem("my_booking_guestid");
+      if (guest_id == null || guest_id == undefined)
+        window.location = "../../my_booking.html";
+
+      if (
+        sessionStorage.getItem("change_checkin") == null ||
+        sessionStorage.getItem("change_checkout") == null
+      ) {
+        window.location = "./select_date.html";
+      }
+
+      let date_from = new Date(sessionStorage.getItem("change_checkin"));
+      let date_to = new Date(sessionStorage.getItem("change_checkout"));
+
+      var Difference_In_Time = date_to.getTime() - date_from.getTime();
+      var nights = Difference_In_Time / (1000 * 3600 * 24);
+
+      let reqr_roomtype = (function () {
+        var tmp = null;
+        $.ajax({
+          async: false,
+          url: "../../php_functions/change_booking/get_roomtype.php",
+          type: "POST",
+          success: function (data) {
+            tmp = data;
+          },
+        });
+        return JSON.parse(tmp);
+      })();
+
+      let req_rooms = (function () {
+        var tmp = null;
+        $.ajax({
+          async: false,
+          url: "../../php_functions/change_booking/get_rooms.php",
+          data:
+            "check_in=" +
+            sessionStorage.getItem("change_checkin") +
+            "&check_out=" +
+            sessionStorage.getItem("change_checkout"),
+          type: "POST",
+          success: function (data) {
+            tmp = data;
+          },
+        });
+        return JSON.parse(tmp);
+      })();
+
+      reqr_roomtype.map((e) => {
+        let counter_rooms = 0;
+        req_rooms.map((rooms) => {
+          if (rooms.roomtype_id == e.roomtype_id) {
+            counter_rooms += 1;
+          } else {
+          }
+        });
+
+        let option = "";
+
+        if (counter_rooms == 0) {
+          option = "<option value='0'>No available room</option>";
+        } else {
+          for (i = 1; counter_rooms >= i; i++) {
+            option += "<option value=" + i + ">" + i + "</option>";
+          }
+        }
+
+        $("#table_rooms > tbody:last-child").append(
+          "<tr><td><img src='../../admin/dist/img/room/" +
+            e.roomtype_photo +
+            "'/ style='width:200px; max-height:100%' height:150px;><h3>" +
+            e.roomtype_name +
+            "</h3></td><td>Php " +
+            e.roomtype_price +
+            ".00</td><td>" +
+            e.roomtype_capacity +
+            "</td><td>" +
+            e.description +
+            "</td><td><form class='add-room'><div class='input-group mb-3'><input value='" +
+            e.roomtype_id +
+            "' hidden/><input value='" +
+            e.roomtype_price +
+            "' hidden/><input value='" +
+            e.roomtype_name +
+            "' hidden/><input value='" +
+            e.roomtype_capacity +
+            "' hidden/><select class='form-control'><option selected hidden disabled></option>" +
+            option +
+            "</select><div class='input-group-append'><button type='submit' class='room" +
+            e.roomtype_id +
+            " btn btn-primary' id='room" +
+            e.roomtype_id +
+            "'>+</button></div></div></form><span>(" +
+            counter_rooms +
+            " Room left)</span></td></tr>"
+        );
+      });
+
+      let selected_array = [];
+
+      $(".add-room").submit(function (e) {
+        e.preventDefault();
+        if (e.target[4].value != 0) {
+          let roomtype_id = e.target[0].value;
+          let roomtype_price = e.target[1].value;
+          let roomtype_name = e.target[2].value;
+          let roomtype_capacity = e.target[3].value;
+          let num_rooms = e.target[4].options.selectedIndex;
+
+          let new_price = roomtype_price * num_rooms * nights;
+          let new_capacity = roomtype_capacity * num_rooms;
+          let selected_object = {};
+
+          let selected_rooms = [];
+
+          let counter = 1;
+          req_rooms.map((rooms) => {
+            if (rooms.roomtype_id == roomtype_id && counter <= num_rooms) {
+              selected_rooms.push(rooms.room_id);
+              counter++;
+            }
+          });
+
+          selected_object.roomtype_id = roomtype_id;
+          selected_object.roomtype_name = roomtype_name;
+          selected_object.num_rooms = num_rooms;
+          selected_object.new_capacity = new_capacity;
+          selected_object.new_price = new_price;
+          selected_object.room_ids = selected_rooms;
+
+          selected_array.push(selected_object);
+
+          $("#room" + roomtype_id).attr("disabled", "disabled");
+          $(".room" + roomtype_id).attr("disabled", "disabled");
+
+          $("#invoice > tbody:last-child").append(
+            "<tr id='" +
+              roomtype_id +
+              "'>" +
+              "<th>" +
+              roomtype_name +
+              "</th>" +
+              "<td>" +
+              num_rooms +
+              "</td>" +
+              "<td> " +
+              new_price +
+              ".00</td>" +
+              "<td>" +
+              '<button class="btn' +
+              roomtype_id +
+              ' btn btn-default">' +
+              '<i class="fa fa-times"></i>' +
+              "</button>" +
+              "</td>" +
+              "</tr>"
+          );
+
+          $(".btn" + roomtype_id).attr(
+            "onclick",
+            "deleteselected(" + roomtype_id + ")"
+          );
+        } else {
+          Swal.fire({
+            icon: "info",
+            title: "Oops...",
+            text:
+              "This type of room has no available room, Try another booking dates",
+          });
+        }
+      });
+
+      handleNumguest = () => {
+        $(".option_numguest").remove();
+        let counter_guest = 0;
+        selected_array.map((room) => {
+          counter_guest += room.new_capacity;
+        });
+
+        for (i = 1; counter_guest >= i; i++) {
+          $("#num_guest").append(
+            "<option class='option_numguest' value='" +
+              i +
+              "'>" +
+              i +
+              "</option>"
+          );
+        }
+      };
+
+      deleteselected = (e) => {
+        handleNumguest();
+        let room_id = e;
+        let new_object = {};
+
+        selected_array = selected_array.filter(check_selected);
+
+        function check_selected(item, index, array) {
+          if (item.roomtype_id != room_id) {
+            return item;
+          }
+        }
+
+        $("#" + room_id).remove();
+        $("#room" + room_id).removeAttr("disabled", "disabled");
+        $(".room" + room_id).removeAttr("disabled", "disabled");
+      };
+
+      $("#continue").click((e) => {
+        if (selected_array.length != 0) {
+          $("#num_guest-modal-sm").modal("show");
+          handleNumguest();
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "You forgot something?",
+            text: "Please select room first!",
+          });
+        }
+      });
+
+      $("#confirm_room").submit((e) => {
+        e.preventDefault();
+        let number_guest = e.target[1].options.selectedIndex;
+
+        sessionStorage.setItem("change_numguest", number_guest);
+        sessionStorage.setItem(
+          "change_room_details",
+          JSON.stringify(selected_array)
+        );
+
+        window.location = "review_booking.html";
+      });
+    });
+  </script>
+</html>
